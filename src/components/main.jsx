@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
         marginTop: Constants.statusBarHeight,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: colors.beige,
+        backgroundColor: colors.green2,
     },
     title: {
         fontSize: 36,
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         color: colors.black,
     },
     button: {
-        backgroundColor: colors.gray,
+        backgroundColor: colors.beige2,
         paddingVertical: 15,
         paddingHorizontal: 30,
         borderRadius: 10,
@@ -41,20 +41,21 @@ const styles = StyleSheet.create({
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
-            height: 12,
+            height: 8,
         },
         shadowOpacity: 0.58,
         shadowRadius: 16.00,
-        elevation: 24,
+        elevation: 16,
     },
     buttonText: {
-        color: colors.beige,
+        color: colors.black,
         fontSize: 24,
         fontWeight: 'bold',
     },
     version: {
         fontSize: 14,
         color: colors.black,
+        fontFamily: 'Opensans'
     },
 });
 
