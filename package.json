@@ -23,11 +23,15 @@
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^6.2.0",
-    "eslint-plugin-react": "^7.34.2"
+    "eslint-plugin-react": "^7.34.3"
   },
   "private": true,
   "eslintConfig": {
     "parser": "@babel/eslint-parser",
-    "extends": ["standard", "standard-jsx", "standard-react"]
+    "extends": [
+      "standard",
+      "standard-jsx",
+      "standard-react"
+    ]
   }
 }
