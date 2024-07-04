@@ -3,7 +3,7 @@ import { Text, View, TouchableWithoutFeedback, Alert, StyleSheet, Button } from 
 import Constants from "expo-constants";
 import { colors } from "../global/colors";
 
-const Main = () => {
+const WelcomeScreen = () => {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Mis Finanzas</Text>
@@ -60,4 +60,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default Main
+export default WelcomeScreen

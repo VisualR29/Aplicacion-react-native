@@ -1,7 +1,9 @@
+import * as React from 'react';
 import { useCallback } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-import Main from './src/components/main';
+import AppNavigator from './src/navigation/AppNavigator';
 
 export default function App() {
   //Configuración de fuente
@@ -17,6 +19,8 @@ export default function App() {
   }, [fontsLoaded, fontError]);
 
   return (
-    <Main />
+    <NavigationContainer>
+      <AppNavigator />
+    </NavigationContainer>
   );
 }
