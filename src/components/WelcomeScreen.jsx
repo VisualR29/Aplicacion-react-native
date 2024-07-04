@@ -1,19 +1,19 @@
 import React from "react";
-import { Text, View, TouchableWithoutFeedback, Alert, StyleSheet, Button } from "react-native";
+import { Text, View, TouchableWithoutFeedback, StyleSheet } from "react-native";
 import Constants from "expo-constants";
 import { colors } from "../global/colors";
 
-const WelcomeScreen = () => {
+const WelcomeScreen = ({navigation}) => {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Mis Finanzas</Text>
             <TouchableWithoutFeedback
-                onPress={() => Alert.alert('Se ha tocado el botón de INICIAR')}>
+                onPress={() => navigation.navigate('Main')}>
                 <View style={styles.button}>
                     <Text style={styles.buttonText}>Iniciar</Text>
                 </View>
             </TouchableWithoutFeedback>
-            <Text style={styles.version}>Versión 0.1</Text>
+            <Text style={styles.version}>Versión 0.2</Text>
         </View>
     )
 }
@@ -21,7 +21,7 @@ const WelcomeScreen = () => {
 const styles = StyleSheet.create({
     container: {
         flexGrow: 1,
-        marginTop: Constants.statusBarHeight,
+        //marginTop: Constants.statusBarHeight,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: colors.green2,

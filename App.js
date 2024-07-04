@@ -7,7 +7,7 @@ import AppNavigator from './src/navigation/AppNavigator';
 
 export default function App() {
   //Configuración de fuente
-  
+
   const [fontsLoaded, fontError] = useFonts({
     'Opensans': require('./assets/OpenSans-VariableFont_wdth,wght.ttf')
   })
@@ -19,8 +19,6 @@ export default function App() {
   }, [fontsLoaded, fontError]);
 
   return (
-    <NavigationContainer>
-      <AppNavigator />
-    </NavigationContainer>
+    <AppNavigator />
   );
 }
