@@ -13,7 +13,7 @@ const WelcomeScreen = ({navigation}) => {
                     <Text style={styles.buttonText}>Iniciar</Text>
                 </View>
             </TouchableWithoutFeedback>
-            <Text style={styles.version}>Versión 0.2</Text>
+            <Text style={styles.version}>-Versión 0.2-</Text>
         </View>
     )
 }
