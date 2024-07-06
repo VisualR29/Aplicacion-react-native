@@ -2,6 +2,7 @@ import React from "react";
 import { Text, View, TouchableWithoutFeedback, StyleSheet } from "react-native";
 import Constants from "expo-constants";
 import { colors } from "../global/colors";
+import Button from "../components/Button";
 
 const WelcomeScreen = ({navigation}) => {
     return (
@@ -13,6 +14,7 @@ const WelcomeScreen = ({navigation}) => {
                     <Text style={styles.buttonText}>Iniciar</Text>
                 </View>
             </TouchableWithoutFeedback>
+            {/* <Button link='Main' text='Iniciar' /> */}
             <Text style={styles.version}>-Versión 0.2-</Text>
         </View>
     )
@@ -55,7 +57,7 @@ const styles = StyleSheet.create({
     version: {
         fontSize: 14,
         color: colors.black,
-        fontFamily: 'Opensans'
+        //fontFamily: 'Opensans'
     },
 });
 

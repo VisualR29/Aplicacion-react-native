@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import WelcomeScreen from '../components/WelcomeScreen';
-import MainScreen from '../components/MainScreen';
-import Ingresos from '../components/Ingresos';
-import Gastos from '../components/Gastos';
-import Ahorro from '../components/Ahorro';
-import Estadisticas from '../components/Estadisticas';
+
+import WelcomeScreen from '../screens/WelcomeScreen';
+import MainScreen from '../screens/MainScreen';
+import Ingresos from '../screens/Ingresos';
+import Gastos from '../screens/Gastos';
+import Ahorro from '../screens/Ahorro';
+import Estadisticas from '../screens/Estadisticas';
 
 const Navigator = createNativeStackNavigator();
 
