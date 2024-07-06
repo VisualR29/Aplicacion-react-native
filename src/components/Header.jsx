@@ -21,8 +21,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     text: {
-        color: colors.green2,
+        color: colors.black,
         fontSize: 22,
-        fontFamily: 'Opensans'
+        fontWeight: 'bold'
     },
 });

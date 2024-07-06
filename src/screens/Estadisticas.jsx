@@ -1,12 +1,11 @@
 import { Text, View } from 'react-native'
 import React, { Component } from 'react'
+import Header from './../components/Header'
 
 export class Estadisticas extends Component {
   render() {
     return (
-      <View>
-            <Text>Estadisticas</Text>
-      </View>
+      <Header title={"ESTADISTICAS"} />
     )
   }
 }

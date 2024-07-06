@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     version: {
         fontSize: 14,
         color: colors.black,
-        //fontFamily: 'Opensans'
+        fontFamily: 'Opensans'
     },
 });
 

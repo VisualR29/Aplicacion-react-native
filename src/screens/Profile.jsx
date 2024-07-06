@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import { Text, View } from 'react-native'
 import Header from './../components/Header'
 
-export class Ingresos extends Component {
+export class Profile extends Component {
     render() {
         return (
-            <Header title={"INGRESOS"} />
+            <Header title={"PROFILE"} />
         )
     }
 }
 
-export default Ingresos
+export default Profile
