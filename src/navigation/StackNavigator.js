@@ -9,25 +9,25 @@ import Gastos from '../screens/Gastos';
 import Ahorro from '../screens/Ahorro';
 import Estadisticas from '../screens/Estadisticas';
 
-const Navigator = createNativeStackNavigator();
+const Stack = createNativeStackNavigator();
 
-const AppNavigator = () => {
+const StackNavigator = () => {
     return (
         <NavigationContainer>
-            <Navigator.Navigator>
-                <Navigator.Screen
+            <Stack.Navigator>
+                <Stack.Screen
                     name="Welcome"
                     component={WelcomeScreen}
                     options={{ title: 'Welcome' }}
                 />
-                <Navigator.Screen name="Main" component={MainScreen} />
-                <Navigator.Screen name="Ingresos" component={Ingresos} />
-                <Navigator.Screen name="Gastos" component={Gastos} />
-                <Navigator.Screen name="Ahorro" component={Ahorro} />
-                <Navigator.Screen name="Estadisticas" component={Estadisticas} />
-            </Navigator.Navigator>
+                <Stack.Screen name="Main" component={MainScreen} />
+                <Stack.Screen name="Ingresos" component={Ingresos} />
+                <Stack.Screen name="Gastos" component={Gastos} />
+                <Stack.Screen name="Ahorro" component={Ahorro} />
+                <Stack.Screen name="Estadisticas" component={Estadisticas} />
+            </Stack.Navigator>
         </NavigationContainer>
     );
 };
 
-export default AppNavigator;
+export default StackNavigator;

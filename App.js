@@ -2,7 +2,9 @@ import * as React from 'react';
 import { useCallback } from 'react';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-import AppNavigator from './src/navigation/AppNavigator';
+import StackNavigator from './src/navigation/StackNavigator';
+import TabNavigator from './src/navigation/TabNavigator';
+import { NavigationContainer } from '@react-navigation/native';
 
 export default function App() {
   //Configuración de fuente
@@ -18,6 +20,9 @@ export default function App() {
   }, [fontsLoaded, fontError]);
 
   return (
-      <AppNavigator />
+    <>
+      <StackNavigator />
+      {/* <TabNavigator /> */}
+    </>
   );
 }
