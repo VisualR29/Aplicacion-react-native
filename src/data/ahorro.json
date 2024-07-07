@@ -1,0 +1,20 @@
+[
+    {
+        "idahorro": 1,
+        "nombre": "Fondo de Emergencia",
+        "meta": 5000.00,
+        "fechameta": "2024-12-31"
+    },
+    {
+        "idahorro": 2,
+        "nombre": "Vacaciones en Europa",
+        "meta": 3000.00,
+        "fechameta": "2025-06-30"
+    },
+    {
+        "idahorro": 3,
+        "nombre": "Comprar un Automóvil",
+        "meta": 10000.00,
+        "fechameta": "2026-09-01"
+    }
+]

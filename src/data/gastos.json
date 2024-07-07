@@ -1,0 +1,92 @@
+[
+    {
+        "idgasto": 1,
+        "monto": 100.00,
+        "nombre": "Compras del Supermercado",
+        "tipopago": "Tarjeta de Crédito",
+        "categoria": "Alimentos",
+        "frecuencia": "Semanal",
+        "fecha": "2023-01-07"
+    },
+    {
+        "idgasto": 2,
+        "monto": 50.00,
+        "nombre": "Cena en Restaurante",
+        "tipopago": "Efectivo",
+        "categoria": "Entretenimiento",
+        "frecuencia": "Una vez",
+        "fecha": "2023-01-10"
+    },
+    {
+        "idgasto": 3,
+        "monto": 200.00,
+        "nombre": "Pago de Servicios Públicos",
+        "tipopago": "Débito Automático",
+        "categoria": "Servicios",
+        "frecuencia": "Mensual",
+        "fecha": "2023-01-15"
+    },
+    {
+        "idgasto": 4,
+        "monto": 70.00,
+        "nombre": "Suscripción a Internet",
+        "tipopago": "Tarjeta de Débito",
+        "categoria": "Comunicación",
+        "frecuencia": "Mensual",
+        "fecha": "2023-01-20"
+    },
+    {
+        "idgasto": 5,
+        "monto": 300.00,
+        "nombre": "Renta de Apartamento",
+        "tipopago": "Transferencia Bancaria",
+        "categoria": "Vivienda",
+        "frecuencia": "Mensual",
+        "fecha": "2023-02-01"
+    },
+    {
+        "idgasto": 6,
+        "monto": 15.00,
+        "nombre": "Café y Snacks",
+        "tipopago": "Efectivo",
+        "categoria": "Alimentos",
+        "frecuencia": "Diario",
+        "fecha": "2023-02-03"
+    },
+    {
+        "idgasto": 7,
+        "monto": 100.00,
+        "nombre": "Compra de Ropa",
+        "tipopago": "Tarjeta de Crédito",
+        "categoria": "Vestimenta",
+        "frecuencia": "Trimestral",
+        "fecha": "2023-02-15"
+    },
+    {
+        "idgasto": 8,
+        "monto": 25.00,
+        "nombre": "Suscripción a Netflix",
+        "tipopago": "Tarjeta de Crédito",
+        "categoria": "Entretenimiento",
+        "frecuencia": "Mensual",
+        "fecha": "2023-02-20"
+    },
+    {
+        "idgasto": 9,
+        "monto": 60.00,
+        "nombre": "Gasolina",
+        "tipopago": "Tarjeta de Débito",
+        "categoria": "Transporte",
+        "frecuencia": "Semanal",
+        "fecha": "2023-03-01"
+    },
+    {
+        "idgasto": 10,
+        "monto": 500.00,
+        "nombre": "Vacaciones",
+        "tipopago": "Efectivo",
+        "categoria": "Viajes",
+        "frecuencia": "Anual",
+        "fecha": "2023-03-15"
+    }
+]

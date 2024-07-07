@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     },
     month: {
         fontSize: 18,
-        fontFamily: 'Opensans'
+        // fontFamily: 'Opensans'
         
 
     },

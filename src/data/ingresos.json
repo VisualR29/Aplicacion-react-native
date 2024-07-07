@@ -1,0 +1,92 @@
+[
+    {
+        "idingreso": 1,
+        "monto": 1500.50,
+        "nombre": "Salario Mensual",
+        "recibidoen": "Cuenta Bancaria",
+        "categoria": "Salario",
+        "frecuencia": "Mensual",
+        "fecha": "2023-01-01"
+    },
+    {
+        "idingreso": 2,
+        "monto": 200.00,
+        "nombre": "Freelance Project",
+        "recibidoen": "PayPal",
+        "categoria": "Freelance",
+        "frecuencia": "Una vez",
+        "fecha": "2023-01-15"
+    },
+    {
+        "idingreso": 3,
+        "monto": 50.00,
+        "nombre": "Venta de Artículos Usados",
+        "recibidoen": "Efectivo",
+        "categoria": "Ventas",
+        "frecuencia": "Una vez",
+        "fecha": "2023-02-01"
+    },
+    {
+        "idingreso": 4,
+        "monto": 75.00,
+        "nombre": "Dividendos de Acciones",
+        "recibidoen": "Cuenta Bancaria",
+        "categoria": "Inversiones",
+        "frecuencia": "Trimestral",
+        "fecha": "2023-03-31"
+    },
+    {
+        "idingreso": 5,
+        "monto": 100.00,
+        "nombre": "Intereses de Ahorros",
+        "recibidoen": "Cuenta Bancaria",
+        "categoria": "Intereses",
+        "frecuencia": "Mensual",
+        "fecha": "2023-04-01"
+    },
+    {
+        "idingreso": 6,
+        "monto": 300.00,
+        "nombre": "Pago de Consultoría",
+        "recibidoen": "Transferencia Bancaria",
+        "categoria": "Consultoría",
+        "frecuencia": "Una vez",
+        "fecha": "2023-05-15"
+    },
+    {
+        "idingreso": 7,
+        "monto": 400.00,
+        "nombre": "Alquiler de Propiedad",
+        "recibidoen": "Cuenta Bancaria",
+        "categoria": "Rentas",
+        "frecuencia": "Mensual",
+        "fecha": "2023-06-01"
+    },
+    {
+        "idingreso": 8,
+        "monto": 600.00,
+        "nombre": "Bonificación Anual",
+        "recibidoen": "Cuenta Bancaria",
+        "categoria": "Bonos",
+        "frecuencia": "Anual",
+        "fecha": "2023-12-31"
+    },
+    {
+        "idingreso": 9,
+        "monto": 150.00,
+        "nombre": "Clases Particulares",
+        "recibidoen": "Efectivo",
+        "categoria": "Educación",
+        "frecuencia": "Mensual",
+        "fecha": "2023-07-01"
+    },
+    {
+        "idingreso": 10,
+        "monto": 500.00,
+        "nombre": "Regalo de Cumpleaños",
+        "recibidoen": "Efectivo",
+        "categoria": "Regalos",
+        "frecuencia": "Una vez",
+        "fecha": "2023-08-20"
+    }
+]
