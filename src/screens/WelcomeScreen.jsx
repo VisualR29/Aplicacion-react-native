@@ -1,8 +1,5 @@
-import React from "react";
 import { Text, View, TouchableWithoutFeedback, StyleSheet } from "react-native";
-import Constants from "expo-constants";
 import { colors } from "../global/colors";
-import Button from "../components/Button";
 
 const WelcomeScreen = ({navigation}) => {
     return (

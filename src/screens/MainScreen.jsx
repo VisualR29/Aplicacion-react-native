@@ -1,6 +1,4 @@
-import React from "react";
-import { Text, View, Alert, StyleSheet, Button, TouchableWithoutFeedback } from "react-native";
-import Constants from "expo-constants";
+import { Text, View, StyleSheet, TouchableWithoutFeedback } from "react-native";
 import { colors } from "../global/colors";
 
 const MainScreen = ({ navigation }) => {
@@ -15,7 +13,7 @@ const MainScreen = ({ navigation }) => {
                     onPress={() => navigation.navigate('Ingresos')}>
                     <View style={styles.button}>
                         <Text style={styles.buttonText}>Ingresos</Text>
-                    </View> 
+                    </View>
                 </TouchableWithoutFeedback>
                 <TouchableWithoutFeedback
                     onPress={() => navigation.navigate('Gastos')}>
@@ -55,7 +53,7 @@ const styles = StyleSheet.create({
     month: {
         fontSize: 18,
         // fontFamily: 'Opensans'
-        
+
 
     },
     button: {

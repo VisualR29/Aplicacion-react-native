@@ -1,11 +1,10 @@
 import { Text, View, StyleSheet, TouchableWithoutFeedback } from 'react-native'
-import React, { Component } from 'react'
 import { colors } from '../global/colors';
 
 const Button = ({ navigation, link, text }) => {
     return (
         <TouchableWithoutFeedback
-            onPress={() => navigation.navigate({link})}>
+            onPress={() => navigation.navigate({ link })}>
             <View style={styles.button}>
                 <Text style={styles.buttonText}>{text}</Text>
             </View>
@@ -37,4 +36,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Button
+export default Button;
