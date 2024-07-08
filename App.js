@@ -8,7 +8,8 @@ export default function App() {
 
   //Configuración de fuente
   const [fontsLoaded, fontError] = useFonts({
-    'Opensans': require('./assets/OpenSans-VariableFont_wdth,wght.ttf')
+    'MyFont' : require('./assets/PlayfairDisplay-VariableFont_wght.ttf'), 
+    'MyFontItalic': require('./assets/PlayfairDisplay-Italic-VariableFont_wght.ttf'),
   })
 
   const onLayoutRootView = useCallback(async () => {

@@ -5,7 +5,7 @@ import TabNavigator from './TabNavigator';
 
 const Stack = createNativeStackNavigator();
 
-const AppNavigator = () => {
+export default function AppNavigator() {
     return (
         <NavigationContainer
             initialRouteName="AppNavigator">
@@ -22,5 +22,3 @@ const AppNavigator = () => {
         </NavigationContainer>
     )
 }
-
-export default AppNavigator

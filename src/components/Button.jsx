@@ -2,7 +2,7 @@ import { Text, View, StyleSheet, TouchableWithoutFeedback } from 'react-native'
 import React, { Component } from 'react'
 import { colors } from '../global/colors';
 
-export const Button = ({ navigation, link, text }) => {
+const Button = ({ navigation, link, text }) => {
     return (
         <TouchableWithoutFeedback
             onPress={() => navigation.navigate({link})}>

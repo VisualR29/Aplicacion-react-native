@@ -3,7 +3,7 @@ import Profile from "../screens/Profile";
 
 const Stack = createNativeStackNavigator();
 
-export default function ProfileStack() {
+export default function ProfileStack () {
     return (
         <Stack.Navigator
             initialRouteName="ProfileScreen"

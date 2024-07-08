@@ -1,17 +1,17 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Estadisticas from "../screens/Estadisticas";
+import Income from "../screens/Income";
 
 const Stack = createNativeStackNavigator();
 
-export default function EstadisticasStack() {
+export default function IncomeStack() {
     return (
         <Stack.Navigator
-            initialRouteName="EstadisticasScreen"
+            initialRouteName="IncomeScreen"
             screenOptions={{ headerShown: false }}
         >
             <Stack.Screen
-                name="EstadisticasScreen"
-                component={Estadisticas} />
+                name="IncomeScreen"
+                component={Income} />
         </Stack.Navigator>
     );
 }

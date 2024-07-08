@@ -10,8 +10,6 @@ const Header = ({ title }) => {
     )
 }
 
-export default Header
-
 const styles = StyleSheet.create({
     container: {
         width: "100%",
@@ -26,3 +24,5 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
 });
+
+export default Header;

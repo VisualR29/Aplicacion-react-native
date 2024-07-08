@@ -1,17 +1,17 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Ahorro from "../screens/Ahorro";
+import Expenses from "../screens/Expenses";
 
 const Stack = createNativeStackNavigator();
 
-export default function AhorroStack() {
+export default function ExpensesStack(){
     return (
         <Stack.Navigator
-            initialRouteName="AhorroScreen"
+            initialRouteName="ExpensesScreen"
             screenOptions={{ headerShown: false }}
         >
             <Stack.Screen
-                name="AhorroScreen"
-                component={Ahorro} />
+                name="ExpensesScreen"
+                component={Expenses} />
         </Stack.Navigator>
     );
 }

@@ -3,13 +3,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Header from '../components/Header';
 import MainStack from './MainStack';
-import IngresosStack from './IngresosStack';
-import GastosStack from './GastosStack';
 import ProfileStack from './ProfileStack';
 
 const Tab = createBottomTabNavigator();
 
-function TabNavigator() {
+export default function TabNavigator() {
     return (
         <Tab.Navigator>
             <Tab.Screen
@@ -23,5 +21,3 @@ function TabNavigator() {
         </Tab.Navigator>
     );
 }
-
-export default TabNavigator

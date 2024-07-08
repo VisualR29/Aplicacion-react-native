@@ -85,4 +85,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default MainScreen
+export default MainScreen;

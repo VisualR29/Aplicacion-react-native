@@ -1,17 +1,17 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Ingresos from "../screens/Ingresos";
+import Statistics from "../screens/Statistics";
 
 const Stack = createNativeStackNavigator();
 
-export default function IngresosStack() {
+export default function StatisticsStack() {
     return (
         <Stack.Navigator
-            initialRouteName="IngresosScreen"
+            initialRouteName="StatisticsScreen"
             screenOptions={{ headerShown: false }}
         >
             <Stack.Screen
-                name="IngresosScreen"
-                component={Ingresos} />
+                name="StatisticsScreen"
+                component={Statistics} />
         </Stack.Navigator>
     );
 }
