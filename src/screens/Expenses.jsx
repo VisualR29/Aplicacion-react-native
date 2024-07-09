@@ -1,8 +1,13 @@
+import { View } from 'react-native';
+import ExpensesList from '../components/ExpensesList';
 import Header from '../components/Header'
 
 const Expenses = () => {
     return (
-        <Header title={"Gastos"} />
+        <View>
+            <Header title={"Gastos"} />
+            <ExpensesList />
+        </View>
     )
 }
 
