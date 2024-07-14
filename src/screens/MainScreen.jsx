@@ -1,5 +1,6 @@
 import { Text, View, StyleSheet, TouchableWithoutFeedback } from "react-native";
 import { colors } from "../global/colors";
+import Button from "../components/Button";
 
 const MainScreen = ({ navigation }) => {
     return (
@@ -9,30 +10,10 @@ const MainScreen = ({ navigation }) => {
                 <Text style={styles.month}>July</Text>
             </View>
             <View style={[styles.container, { flex: 3, flexWrap: 'wrap' }]}>
-                <TouchableWithoutFeedback
-                    onPress={() => navigation.navigate('Ingresos')}>
-                    <View style={styles.button}>
-                        <Text style={styles.buttonText}>Ingresos</Text>
-                    </View>
-                </TouchableWithoutFeedback>
-                <TouchableWithoutFeedback
-                    onPress={() => navigation.navigate('Ahorro')}>
-                    <View style={styles.button}>
-                        <Text style={styles.buttonText}>Ahorro</Text>
-                    </View>
-                </TouchableWithoutFeedback>
-                <TouchableWithoutFeedback
-                    onPress={() => navigation.navigate('Gastos')}>
-                    <View style={[styles.button, {}]}>
-                        <Text style={styles.buttonText}>Gastos</Text>
-                    </View>
-                </TouchableWithoutFeedback>
-                <TouchableWithoutFeedback
-                    onPress={() => navigation.navigate('Estadisticas')}>
-                    <View style={styles.button}>
-                        <Text style={styles.buttonText}>Estadisticas</Text>
-                    </View>
-                </TouchableWithoutFeedback>
+                <Button link={"Ingresos"} text={"Ingresos"} />
+                <Button link={"Ahorro"} text={"Ahorro"} />
+                <Button link={"Gastos"} text={"Gastos"} />
+                <Button link={"Estadisticas"} text={"Estadisticas"}/>
             </View>
             <View style={[styles.container, { flex: 1 }]}>
 

@@ -4,6 +4,7 @@ import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import AppNavigator from './src/navigation/AppNavigator';
 import { initSQLiteDB } from './src/persistence/index';
+import { SafeAreaView, Text } from 'react-native';
 
 // (async () => {
 //   try {

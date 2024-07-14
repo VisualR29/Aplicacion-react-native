@@ -1,25 +1,33 @@
 import { Text, View, StyleSheet, TouchableWithoutFeedback } from 'react-native'
 import { colors } from '../global/colors';
+import { useNavigation } from '@react-navigation/native';
 
-const Button = ({ navigation, link, text }) => {
+const Button = ({ link, text }) => {
+
+    const navigation = useNavigation();
+
     return (
         <TouchableWithoutFeedback
-            onPress={() => navigation.navigate({ link })}>
+            onPress={() => navigation.navigate(link)}>
             <View style={styles.button}>
                 <Text style={styles.buttonText}>{text}</Text>
             </View>
         </TouchableWithoutFeedback>
     )
-
 }
 
 const styles = StyleSheet.create({
     button: {
         backgroundColor: colors.beige2,
-        paddingVertical: 15,
-        paddingHorizontal: 30,
-        borderRadius: 10,
-        marginBottom: 20,
+        width: '40%',
+        height: '35%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingVertical: 10,
+        paddingHorizontal: 10,
+        borderRadius: 15,
+        marginVertical: '5%',
+        marginHorizontal: '5%',
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
