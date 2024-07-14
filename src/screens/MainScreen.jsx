@@ -16,15 +16,15 @@ const MainScreen = ({ navigation }) => {
                     </View>
                 </TouchableWithoutFeedback>
                 <TouchableWithoutFeedback
-                    onPress={() => navigation.navigate('Gastos')}>
-                    <View style={[styles.button, {}]}>
-                        <Text style={styles.buttonText}>Gastos</Text>
-                    </View>
-                </TouchableWithoutFeedback>
-                <TouchableWithoutFeedback
                     onPress={() => navigation.navigate('Ahorro')}>
                     <View style={styles.button}>
                         <Text style={styles.buttonText}>Ahorro</Text>
+                    </View>
+                </TouchableWithoutFeedback>
+                <TouchableWithoutFeedback
+                    onPress={() => navigation.navigate('Gastos')}>
+                    <View style={[styles.button, {}]}>
+                        <Text style={styles.buttonText}>Gastos</Text>
                     </View>
                 </TouchableWithoutFeedback>
                 <TouchableWithoutFeedback

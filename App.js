@@ -5,15 +5,15 @@ import * as SplashScreen from 'expo-splash-screen';
 import AppNavigator from './src/navigation/AppNavigator';
 import { initSQLiteDB } from './src/persistence/index';
 
-(async () => {
-  try {
-    const response = await initSQLiteDB()
-    console.log({ responseCreatingDB: response })
-    console.log("DB Inicilized")
-  } catch (error) {
-    console.log({ errorCreatingDB: error })
-  }
-})()
+// (async () => {
+//   try {
+//     const response = await initSQLiteDB()
+//     console.log({ responseCreatingDB: response })
+//     console.log("DB Inicilized")
+//   } catch (error) {
+//     console.log({ errorCreatingDB: error })
+//   }
+// })()
 
 export default function App() {
 

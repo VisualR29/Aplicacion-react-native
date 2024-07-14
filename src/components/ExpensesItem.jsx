@@ -29,19 +29,6 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
     },
-    emptyContainer: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    emptyText: {
-        fontSize: 18,
-        color: '#888',
-    },
-    emptyContainerStyle: {
-        flexGrow: 1,
-        justifyContent: 'center',
-    },
 });
 
 
