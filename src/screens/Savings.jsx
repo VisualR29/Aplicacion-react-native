@@ -1,6 +1,6 @@
 import { View } from 'react-native'
 import Header from '../components/Header'
-import SavingList from '../components/SavingList'
+import SavingList from '../components/saving/SavingList'
 
 const Savings = () => {
 

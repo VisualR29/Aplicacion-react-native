@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { StyleSheet, View, FlatList } from 'react-native'
-import { colors } from '../global/colors'
+import { colors } from '../../global/colors'
 import SavingBox from './SavingBox'
-import savingsData from '../data/savings.json'
+import savingsData from '../../data/savings.json'
 
 const SavingList = () => {
     

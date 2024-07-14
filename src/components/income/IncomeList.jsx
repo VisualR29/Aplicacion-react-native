@@ -1,26 +1,26 @@
 import { useEffect, useState } from 'react';
 import { StyleSheet, View, FlatList, Text } from 'react-native';
-import { colors } from '../global/colors';
-import expensesData from '../data/expenses.json';
-import ExpensesItem from './ExpensesItem';
+import { colors } from '../../global/colors';
+import incomeData from '../../data/income.json';
+import IncomeItem from './IncomeItem';
 
-const ExpensesList = () => {
+const IncomeList = () => {
 
-    const [expenses, setExpenses] = useState([]);
+    const [income, setIncome] = useState([]);
 
     useEffect(() => {
-        setExpenses(expensesData);
+        setIncome(incomeData);
     }, []);
 
     return (
         <View style={styles.container}>
             <FlatList
-                data={expenses}
+                data={income}
                 renderItem={({ item }) =>
-                    <ExpensesItem
-                        expense={item}
+                    <IncomeItem
+                        income={item}
                     />}
-                keyExtractor={item => item.idgasto.toString()}
+                keyExtractor={item => item.idingreso.toString()}
             />
         </View>
     )
@@ -35,4 +35,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default ExpensesList;
+export default IncomeList;
