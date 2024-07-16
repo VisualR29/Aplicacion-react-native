@@ -6,7 +6,6 @@ const Savings = () => {
 
     return (
         <View>
-            <Header title={"AHORRO"} link='SavingsFormScreen'/>
             <SavingList />
         </View>
     )

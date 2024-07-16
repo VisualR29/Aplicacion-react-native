@@ -1,6 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { colors } from '../global/colors';
 import { useNavigation } from '@react-navigation/native';
+import { colors } from '../global/colors';
 
 const AddButton = ({ link }) => {
 

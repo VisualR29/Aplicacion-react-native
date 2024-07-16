@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, TouchableWithoutFeedback } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import { colors } from "../global/colors";
 import Button from "../components/Button";
 

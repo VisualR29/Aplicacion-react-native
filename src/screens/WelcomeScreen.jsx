@@ -1,4 +1,5 @@
 import { Text, View, TouchableWithoutFeedback, StyleSheet } from "react-native";
+import Button from "../components/Button";
 import { colors } from "../global/colors";
 
 const WelcomeScreen = ({navigation}) => {
@@ -12,7 +13,7 @@ const WelcomeScreen = ({navigation}) => {
                 </View>
             </TouchableWithoutFeedback>
             {/* <Button link='Main' text='Iniciar' /> */}
-            <Text style={styles.version}>-Versión 0.2-</Text>
+            <Text style={styles.version}>-Versión 0.3-</Text>
         </View>
     )
 }

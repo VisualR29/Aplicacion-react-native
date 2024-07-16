@@ -1,8 +1,8 @@
 import { View, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { colors } from '../global/colors';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import AntDesign from '@expo/vector-icons/AntDesign';
+import { colors } from '../global/colors';
 import MainStack from './MainStack';
 import ProfileStack from './ProfileStack';
 

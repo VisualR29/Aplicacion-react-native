@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { StyleSheet, View, FlatList, Text } from 'react-native';
+import { StyleSheet, View, FlatList } from 'react-native';
 import { colors } from '../../global/colors';
-import expensesData from '../../data/expenses.json';
 import ExpensesItem from './ExpensesItem';
+import expensesData from '../../data/expenses.json';
 
 const ExpensesList = () => {
 

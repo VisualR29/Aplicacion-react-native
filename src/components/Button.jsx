@@ -1,6 +1,6 @@
 import { Text, View, StyleSheet, TouchableWithoutFeedback } from 'react-native'
-import { colors } from '../global/colors';
 import { useNavigation } from '@react-navigation/native';
+import { colors } from '../global/colors';
 
 const Button = ({ link, text }) => {
 

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { StyleSheet, View, FlatList, Text } from 'react-native';
+import { StyleSheet, View, FlatList } from 'react-native';
 import { colors } from '../../global/colors';
-import incomeData from '../../data/income.json';
 import IncomeItem from './IncomeItem';
+import incomeData from '../../data/income.json';
 
 const IncomeList = () => {
 
