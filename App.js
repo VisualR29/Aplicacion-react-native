@@ -1,8 +1,12 @@
 import { useCallback } from 'react';
+import { StyleSheet, Platform, StatusBar, SafeAreaView } from 'react-native';
+import { Provider } from 'react-redux';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-import AppNavigator from './src/navigation/AppNavigator';
 import { initSQLiteDB } from './src/persistence/index';
+import store from './src/store/index'
+import { colors } from './src/global/colors';
+import Navigator from './src/navigation/Navigator';
 
 // (async () => {
 //   try {
@@ -16,19 +20,29 @@ import { initSQLiteDB } from './src/persistence/index';
 
 export default function App() {
 
-  //Configuración de fuente
+  // Configuración de fuente
   const [fontsLoaded, fontError] = useFonts({
     'MyFont': require('./assets/PlayfairDisplay-VariableFont_wght.ttf'),
     'MyFontItalic': require('./assets/PlayfairDisplay-Italic-VariableFont_wght.ttf'),
-  })
+  });
 
-  const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded || fontError) {
-      await SplashScreen.hideAsync();
-    }
-  }, [fontsLoaded, fontError]);
+  if (!fontsLoaded && !fontError) {
+    return null;
+  }
 
   return (
-    <AppNavigator />
+    <SafeAreaView style={styles.container}>
+      <Provider store={store}>
+        <Navigator />
+      </Provider>
+    </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    flex: 1,
+    backgroundColor: colors.white,
+  },
+});

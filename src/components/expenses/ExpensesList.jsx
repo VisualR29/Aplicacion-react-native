@@ -15,6 +15,7 @@ const ExpensesList = () => {
     return (
         <View style={styles.container}>
             <FlatList
+                showsVerticalScrollIndicator={false}
                 data={expenses}
                 renderItem={({ item }) =>
                     <ExpensesItem

@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity } from 'react-native';
-import { Formik } from 'formik';
-import * as Yup from 'yup';
 import { Picker } from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
 
 const IncomeFormItem = ({ addIncome }) => {
     const [datePickerVisible, setDatePickerVisible] = useState(false);

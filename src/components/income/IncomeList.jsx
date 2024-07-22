@@ -15,6 +15,7 @@ const IncomeList = () => {
     return (
         <View style={styles.container}>
             <FlatList
+                showsVerticalScrollIndicator={false}
                 data={income}
                 renderItem={({ item }) =>
                     <IncomeItem

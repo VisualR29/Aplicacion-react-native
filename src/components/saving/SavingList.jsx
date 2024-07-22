@@ -3,9 +3,12 @@ import { StyleSheet, View, FlatList } from 'react-native'
 import { colors } from '../../global/colors'
 import SavingBox from './SavingBox'
 import savingsData from '../../data/savings.json'
+import { useGetSavingsQuery } from '../../services/AppServices';
 
 const SavingList = () => {
     
+    // const {data: savings} = useGetSavingsQuery()
+
     const [savings, setSavings] = useState([]);
 
     useEffect(() => {
@@ -15,6 +18,7 @@ const SavingList = () => {
     return (
         <View style={styles.container}>
             <FlatList
+                showsVerticalScrollIndicator={false}
                 data={savings}
                 renderItem={({ item }) =>
                     <SavingBox

@@ -3,20 +3,26 @@ import { baseUrl } from "../database/realtimeDataBase";
 
 
 
-export const AppApi = createApi({
+export const appApi = createApi({
+    reducerPath: "appApi",
     baseQuery: fetchBaseQuery({ baseUrl: baseUrl }),
     endpoints: (builder) => ({
         getSavings: builder.query({
             query: () => `savings.json`
         }),
         getExpenses: builder.query({
-            query: (date) => `expenses.json`
+            query: () => `expenses.json`
         }),
         getIncome: builder.query({
-            query: (date) => `income.json?orderBy="fecha"&equalTo="${date}"`
+            query: () => `income.json`
         }),
-        getIncome: builder.query({
+        // getIncome: builder.query({
+        //     query: (date) => `income.json?orderBy="fecha"&equalTo="${date}"`
+        // }),
+        getIncomeId: builder.query({
             query: (incomeId) => `income.json?orderBy="idingreso"&equalTo=${incomeId}`
         })
     })
 })
+
+export const { useGetSavingsQuery, useGetExpensesQuery, useGetIncomeQuery, useGetIncomeIdQuery} = appApi;
