@@ -5,7 +5,6 @@ import { useGetProfileimageQuery } from '../services/AppServices'
 import { clearUser } from '../features/User/UserSlice'
 import { useDB } from '../Hooks/useDB'
 import ProfileButton from '../components/ProfileButton'
-import Header from './../components/Header'
 
 const Profile = ({ navigation }) => {
     const { truncateSessionTable } = useDB()
@@ -29,7 +28,6 @@ const Profile = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <Header title={"PROFILE"} />
             {imageFromBase || imageCamera ? (
                 <Image
                     source={{ uri: imageFromBase?.image || imageCamera }}
@@ -51,7 +49,9 @@ const Profile = ({ navigation }) => {
                         : "Add profile picture"
                 }
             />
-            <ProfileButton onPress={signOut} title="SignOut" />
+            <ProfileButton
+                onPress={signOut}
+                title="SignOut" />
         </View>
     )
 }
@@ -60,21 +60,14 @@ export default Profile;
 
 const styles = StyleSheet.create({
     container: {
+        backgroundColor: colors.green400,
         flex: 1,
         alignItems: 'center',
     },
     img: {
+        marginVertical: "10%",
         height: 200,
         width: 200,
         borderRadius: 100
-    },
-    btn: {
-        marginTop: 10,
-        backgroundColor: colors.green1,
-        width: "80%",
-        justifyContent: 'center',
-        alignItems: 'center',
-        paddingVertical: 7,
-        borderRadius: 5
     }
 })

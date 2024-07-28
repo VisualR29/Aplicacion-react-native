@@ -23,18 +23,20 @@ const MainScreen = () => {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: colors.green1,
+        backgroundColor: colors.green400,
+        alignItems: "center",
     },
     profits: {
         fontSize: 24,
         fontWeight: 'bold',
-        marginBottom: 20,
+        marginTop: 70,
+        marginBottom: 10,
     },
     month: {
         fontSize: 18,
     },
     button: {
-        backgroundColor: colors.beige2,
+        backgroundColor: colors.beige200,
         width: '40%',
         height: '35%',
         justifyContent: 'center',

@@ -53,7 +53,6 @@ const ImageSelector = ({ navigation }) => {
             }
             navigation.goBack();
         } catch (error) {
-            console.log(error);
             navigation.goBack();
         }
     };
@@ -71,13 +70,13 @@ const ImageSelector = ({ navigation }) => {
                         onPress={pickImage}
                         style={({ pressed }) => [styles.btn, { opacity: pressed ? 0.6 : 1 }]}
                     >
-                        <Text style={{ color: "#fff" }}>Take new Photo</Text>
+                        <Text style={ styles.text }>Take new Photo</Text>
                     </Pressable>
                     <Pressable
                         style={({ pressed }) => [styles.btn, { opacity: pressed ? 0.6 : 1 }]}
                         onPress={confirmImage}
                     >
-                        <Text style={{ color: "#fff" }}>Confirm photo</Text>
+                        <Text style={ styles.text }>Confirm photo</Text>
                     </Pressable>
                 </> :
                 <>
@@ -88,7 +87,7 @@ const ImageSelector = ({ navigation }) => {
                         onPress={pickImage}
                         style={({ pressed }) => [styles.btn, { opacity: pressed ? 0.6 : 1 }]}
                     >
-                        <Text style={{ color: "#fff" }}>Take a photo</Text>
+                        <Text style={ styles.text }>Take a photo</Text>
                     </Pressable>
                 </>
             }
@@ -100,17 +99,30 @@ export default ImageSelector
 
 const styles = StyleSheet.create({
     container: {
+        backgroundColor: colors.green400,
         flex: 1,
         alignItems: 'center'
     },
     btn: {
-        marginTop: 10,
-        backgroundColor: colors.green2,
+        marginTop: "5%",
         width: "80%",
-        justifyContent: 'center',
-        alignItems: 'center',
-        paddingVertical: 7,
-        borderRadius: 5
+        borderRadius: 15,
+        backgroundColor: colors.beige200,
+        justifyContent: "center",
+        alignItems: "center",
+        padding: 8,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 8,
+        },
+        shadowOpacity: 0.58,
+        shadowRadius: 16.00,
+        elevation: 16,
+    },
+    text: {
+        fontSize: 18,
+        color: colors.black,
     },
     img: {
         marginVertical: 20,

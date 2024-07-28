@@ -6,7 +6,6 @@ import { colors } from '../global/colors';
 import MainStack from './MainStack';
 import ProfileStack from './ProfileStack';
 
-
 const Tab = createBottomTabNavigator();
 
 export default function TabNavigator() {
@@ -50,7 +49,7 @@ export default function TabNavigator() {
 
 const styles = StyleSheet.create({
     tabBar: {
-        backgroundColor: 'white',
+        backgroundColor: colors.white,
         height: 60
     }
 })

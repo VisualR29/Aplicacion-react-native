@@ -13,7 +13,7 @@ export default SubmitButton;
 
 const styles = StyleSheet.create({
     button: {
-        backgroundColor: colors.green1,
+        backgroundColor: colors.green600,
         borderRadius: 6,
         justifyContent: "center",
         alignItems: "center",
@@ -21,8 +21,9 @@ const styles = StyleSheet.create({
         width: "60%",
     },
     text: {
-        color: colors.gray,
+        color: colors.beige100,
         fontFamily: "MyFont",
+        fontWeight: "bold",
         fontSize: 22,
     },
 });

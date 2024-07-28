@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
         flexGrow: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: colors.green2,
+        backgroundColor: colors.green400,
     },
     title: {
         fontSize: 36,
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         color: colors.black,
     },
     button: {
-        backgroundColor: colors.beige2,
+        backgroundColor: colors.beige200,
         paddingVertical: 15,
         paddingHorizontal: 30,
         borderRadius: 10,

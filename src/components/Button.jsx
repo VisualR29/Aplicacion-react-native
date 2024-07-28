@@ -18,7 +18,7 @@ const Button = ({ link, text }) => {
 
 const styles = StyleSheet.create({
     button: {
-        backgroundColor: colors.beige2,
+        backgroundColor: colors.beige100,
         width: '40%',
         height: '35%',
         justifyContent: 'center',

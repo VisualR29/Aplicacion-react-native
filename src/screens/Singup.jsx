@@ -38,9 +38,6 @@ const Signup = ({ navigation }) => {
             signupSchema.validateSync({ email, password, confirmPassword })
             triggerSignUp({ email, password, returnSecureToken: true })
         } catch (err) {
-            console.log("Entro al signup del error");
-            console.log(err.path);
-            console.log(err.message);
             switch (err.path) {
                 case "email":
                     setErrorMail(err.message);
@@ -56,6 +53,9 @@ const Signup = ({ navigation }) => {
 
     return (
         <View style={styles.main}>
+            <View style={styles.textContainer}>
+                <Text style={styles.text}>Mis Finanzas</Text>
+            </View>
             <View style={styles.container}>
                 <Text style={styles.title}>Signup</Text>
                 <InputForm
@@ -91,26 +91,40 @@ const styles = StyleSheet.create({
     main: {
         width: "100%",
         height: "100%",
-        justifyContent: "center",
         alignItems: "center",
+        backgroundColor: colors.green400,
+    },
+    textContainer: {
+        backgroundColor: colors.beige100,
+        width: "60%",
+        alignItems: "center",
+        marginTop: "25%",
+        paddingVertical: 15,
+        borderRadius: 10,
+    },
+    text: {
+        fontSize: 22,
+        fontFamily: "MyFont",
+        fontWeight: "bold",
     },
     container: {
         width: "90%",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: colors.gray,
+        backgroundColor: colors.beige100,
         gap: 15,
+        marginTop: "25%",
         paddingVertical: 20,
         borderRadius: 10,
     },
     title: {
         fontSize: 22,
         fontFamily: "MyFont",
+        fontWeight: "bold",
     },
     sub: {
         fontSize: 14,
-        fontFamily: "MyFont",
         color: "black",
     },
     subLink: {
