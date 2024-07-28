@@ -6,13 +6,13 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { colors } from '../../global/colors';
 
-const IncomeFormItem = ({ addIncome }) => {
+const ExpensesFormItem = ({ addExpense }) => {
     const [datePickerVisible, setDatePickerVisible] = useState(false);
 
-    const IncomeSchema = Yup.object().shape({
+    const ExpenseSchema = Yup.object().shape({
         monto: Yup.number().required('Monto es requerido'),
         nombre: Yup.string().required('Nombre es requerido'),
-        recibidoen: Yup.string().required('Recibido en es requerido'),
+        tipopago: Yup.string().required('Tipo de pago es requerido'),
         categoria: Yup.string().required('Categoría es requerida'),
         frecuencia: Yup.string().required('Frecuencia es requerida'),
         fecha: Yup.date().required('Fecha es requerida'),
@@ -34,9 +34,9 @@ const IncomeFormItem = ({ addIncome }) => {
 
     return (
         <Formik
-            initialValues={{ monto: '', nombre: '', recibidoen: '', categoria: '', frecuencia: '', fecha: new Date() }}
-            validationSchema={IncomeSchema}
-            onSubmit={(values) => addIncome({ ...values, fecha: formatDate(values.fecha) })}
+            initialValues={{ monto: '', nombre: '', tipopago: '', categoria: '', frecuencia: '', fecha: new Date() }}
+            validationSchema={ExpenseSchema}
+            onSubmit={(values) => addExpense({ ...values, fecha: formatDate(values.fecha) })}
         >
             {({ handleChange, handleBlur, handleSubmit, setFieldValue, values, errors, touched }) => (
                 <View style={styles.container}>
@@ -59,17 +59,17 @@ const IncomeFormItem = ({ addIncome }) => {
                     />
                     {touched.nombre && errors.nombre && <Text style={styles.error}>{errors.nombre}</Text>}
 
-                    <Text>Recibido en:</Text>
+                    <Text>Tipo de pago:</Text>
                     <Picker
-                        selectedValue={values.recibidoen}
-                        onValueChange={(itemValue) => setFieldValue('recibidoen', itemValue)}
+                        selectedValue={values.tipopago}
+                        onValueChange={(itemValue) => setFieldValue('tipopago', itemValue)}
                         style={styles.input}
                     >
                         <Picker.Item label="Efectivo" value="Efectivo" />
                         <Picker.Item label="Débito" value="Debito" />
                         <Picker.Item label="Crédito" value="Credito" />
                     </Picker>
-                    {touched.recibidoen && errors.recibidoen && <Text style={styles.error}>{errors.recibidoen}</Text>}
+                    {touched.tipopago && errors.tipopago && <Text style={styles.error}>{errors.tipopago}</Text>}
 
                     <Text>Categoría:</Text>
                     <Picker
@@ -77,14 +77,37 @@ const IncomeFormItem = ({ addIncome }) => {
                         onValueChange={(itemValue) => setFieldValue('categoria', itemValue)}
                         style={styles.input}
                     >
-                        <Picker.Item label="Aguinaldo" value="Aguinaldo" />
-                        <Picker.Item label="Bonos" value="Bonos" />
+                        <Picker.Item label="Ahorro" value="Ahorro" />
+                        <Picker.Item label="Comida" value="Comida" />
+                        <Picker.Item label="Cuidado personal" value="Cuidado personal" />
+                        <Picker.Item label="Deudas" value="Deudas" />
+                        <Picker.Item label="Diversión" value="Diversion" />
+                        <Picker.Item label="Educación" value="Educacion" />
+                        <Picker.Item label="Ejercicio" value="Ejercicio" />
                         <Picker.Item label="Emprendimiento" value="Emprendimiento" />
-                        <Picker.Item label="Intereses y Dividendos" value="Intereses" />
-                        <Picker.Item label="Otros" value="Otros" />
-                        <Picker.Item label="Propinas" value="Propinas" />
+                        <Picker.Item label="Gastos Administrativos" value="Gastos Administrativos" />
+                        <Picker.Item label="Gastos Operativos" value="Gastos Operativos" />
+                        <Picker.Item label="Hijos" value="Hijos" />
+                        <Picker.Item label="Hogar" value="Hogar" />
+                        <Picker.Item label="Impuestos" value="Impuestos" />
+                        <Picker.Item label="Intereses" value="Intereses" />
+                        <Picker.Item label="Marketing" value="Marketing" />
+                        <Picker.Item label="Mascotas" value="Mascotas" />
+                        <Picker.Item label="Materia prima" value="Materia prima" />
+                        <Picker.Item label="Oficina" value="Oficina" />
+                        <Picker.Item label="Otros gastos" value="Otros gastos" />
                         <Picker.Item label="Regalos" value="Regalos" />
-                        <Picker.Item label="Salario" value="Salario" />
+                        <Picker.Item label="Renta" value="Renta" />
+                        <Picker.Item label="Restaurantes" value="Restaurantes" />
+                        <Picker.Item label="Salarios" value="Salarios" />
+                        <Picker.Item label="Salud" value="Salud" />
+                        <Picker.Item label="Seguros" value="Seguros" />
+                        <Picker.Item label="Servicios" value="Servicios" />
+                        <Picker.Item label="Shopping" value="Shopping" />
+                        <Picker.Item label="Supermercados" value="Supermercados" />
+                        <Picker.Item label="Suscripciones" value="Suscripciones" />
+                        <Picker.Item label="Transporte" value="Transporte" />
+                        <Picker.Item label="Viajes" value="Viajes" />
                     </Picker>
                     {touched.categoria && errors.categoria && <Text style={styles.error}>{errors.categoria}</Text>}
 
@@ -128,7 +151,7 @@ const IncomeFormItem = ({ addIncome }) => {
                     <Button
                         color={colors.beige300}
                         onPress={handleSubmit}
-                        title="Agregar Ingreso" />
+                        title="Agregar Gasto" />
                 </View>
             )}
         </Formik>
@@ -152,4 +175,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default IncomeFormItem;
+export default ExpensesFormItem;

@@ -1,7 +1,8 @@
-import { Alert } from "react-native";
+import { Alert, StyleSheet, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Header from "../../components/Header";
 import IncomeFormItem from "../../components/income/IncomeFormItem";
+import { colors } from "../../global/colors";
 
 export const IncomeForm = () => {
 
@@ -16,9 +17,16 @@ export const IncomeForm = () => {
     };
 
     return (
-        <>
-            <Header title={"INCOMEFORM"} />
+        <View style={styles.container}>
+            <Header title={"Nuevo Ingreso"} />
             <IncomeFormItem addIncome={addIncome} />
-        </>
+        </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        height: "100%",
+        backgroundColor: colors.green200,
+    }
+})

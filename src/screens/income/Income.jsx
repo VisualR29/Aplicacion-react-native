@@ -1,18 +1,9 @@
-import { View, StyleSheet } from 'react-native';
 import IncomeList from '../../components/income/IncomeList';
 
 const Income = () => {
     return (
-        <View style={styles.container}>
-            <IncomeList />
-        </View>
+        <IncomeList />
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        backgroundcolor: '#FFFFFF'
-    }
-});
 
 export default Income;

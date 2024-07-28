@@ -30,9 +30,10 @@ const IncomeList = () => {
 const styles = StyleSheet.create({
     container: {
         width: "100%",
-        backgroundColor: colors.white,
+        backgroundColor: colors.green400,
         justifyContent: "center",
         alignItems: "center",
+        paddingVertical: "5%",
     }
 });
 

@@ -1,4 +1,5 @@
 import { Text, StyleSheet, View } from 'react-native'
+import { colors } from '../../global/colors';
 
 const ExpensesItem = ({ expense }) => {
     return (
@@ -16,10 +17,10 @@ const ExpensesItem = ({ expense }) => {
 const styles = StyleSheet.create({
     container: {
         padding: 20,
-        marginVertical: 8,
-        backgroundColor: '#fff',
-        borderRadius: 8,
-        shadowColor: '#000',
+        marginVertical: 4,
+        backgroundColor: colors.white,
+        borderRadius: 4,
+        shadowColor: colors.black,
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.1,
         shadowRadius: 5,
@@ -28,8 +29,7 @@ const styles = StyleSheet.create({
     nombre: {
         fontSize: 18,
         fontWeight: 'bold',
-    },
+    }
 });
-
 
 export default ExpensesItem;
