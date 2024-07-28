@@ -6,7 +6,7 @@ import savingsData from '../../data/savings.json'
 import { useGetSavingsQuery } from '../../services/AppServices';
 
 const SavingList = () => {
-    
+
     // const {data: savings} = useGetSavingsQuery()
 
     const [savings, setSavings] = useState([]);
@@ -32,10 +32,11 @@ const SavingList = () => {
 
 const styles = StyleSheet.create({
     container: {
-        width: "100%",
-        backgroundColor: colors.white,
+        height: "100%",
+        backgroundColor: colors.green400,
         justifyContent: "center",
         alignItems: "center",
+        paddingVertical: "5%",
     }
 });
 

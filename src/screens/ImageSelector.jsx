@@ -11,9 +11,7 @@ const ImageSelector = ({ navigation }) => {
 
     const [image, setImage] = useState(null)
     const [isImageFromCamera, setIsImageFromCamera] = useState(false);
-
     const dispatch = useDispatch()
-
     const [triggerPostImage, result] = usePostProfileImageMutation();
     const { localId } = useSelector((state) => state.auth.value);
     const { data: imageFromBase } = useGetProfileimageQuery(localId)
@@ -70,24 +68,24 @@ const ImageSelector = ({ navigation }) => {
                         onPress={pickImage}
                         style={({ pressed }) => [styles.btn, { opacity: pressed ? 0.6 : 1 }]}
                     >
-                        <Text style={ styles.text }>Take new Photo</Text>
+                        <Text style={ styles.text }>Tomar nueva imagen</Text>
                     </Pressable>
                     <Pressable
                         style={({ pressed }) => [styles.btn, { opacity: pressed ? 0.6 : 1 }]}
                         onPress={confirmImage}
                     >
-                        <Text style={ styles.text }>Confirm photo</Text>
+                        <Text style={ styles.text }>Confirmar imágen</Text>
                     </Pressable>
                 </> :
                 <>
                     <View style={styles.containerPhoto}>
-                        <Text>No photo to show...</Text>
+                        <Text>Ninguna imágen que mostrar...</Text>
                     </View>
                     <Pressable
                         onPress={pickImage}
                         style={({ pressed }) => [styles.btn, { opacity: pressed ? 0.6 : 1 }]}
                     >
-                        <Text style={ styles.text }>Take a photo</Text>
+                        <Text style={ styles.text }>Tomar foto</Text>
                     </Pressable>
                 </>
             }

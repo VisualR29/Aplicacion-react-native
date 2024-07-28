@@ -45,13 +45,13 @@ const Profile = ({ navigation }) => {
                 onPress={launchCamera}
                 title={
                     imageFromBase || imageCamera
-                        ? "Modify profile picture"
-                        : "Add profile picture"
+                        ? "Modificar imágen de perfil"
+                        : "Agregar imágen de perfil"
                 }
             />
             <ProfileButton
                 onPress={signOut}
-                title="SignOut" />
+                title="Cerrar sesión" />
         </View>
     )
 }

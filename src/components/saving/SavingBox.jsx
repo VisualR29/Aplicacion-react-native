@@ -1,4 +1,5 @@
 import { Text, StyleSheet, View } from 'react-native'
+import { colors } from '../../global/colors';
 
 const SavingBox = ({ saving }) => {
     return (
@@ -15,9 +16,9 @@ const styles = StyleSheet.create({
     container: {
         padding: 10,
         marginVertical: 5,
-        backgroundColor: '#fff',
+        backgroundColor: colors.white,
         borderRadius: 5,
-        shadowColor: '#000',
+        shadowColor: colors.black,
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.1,
         shadowRadius: 5,
