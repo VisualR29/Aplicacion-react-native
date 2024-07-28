@@ -46,4 +46,4 @@ npm start
 Abre la aplicación con algún simulador IOs / Android Studio / Web
 
 ## Siguiente
-Planeo seguir actualizando mi aplicación para incluir estadísticas que ayuden a los usuarios a comprender y gestionar mejor su dinero. Además, me gustaría optimizar la eficiencia de la aplicación y mejorar la interfaz para que sea más intuitiva y libre de inconvenientes para los usuarios.
+Planeo seguir actualizando mi aplicación para incluir estadísticas que ayuden a los usuarios a comprender y gestionar mejor su dinero. Además, me gustaría optimizar la eficiencia de la aplicación y mejorar la interfaz para que sea más intuitiva y libre de inconvenientes para los usuarios, como mejorar la comunicación con la Database.
