@@ -1,14 +1,12 @@
+import { useState, useEffect } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import React, { useState, useEffect } from "react";
-import { colors } from "../global/colors";
-import SubmitButton from "../components/SubmitButton";
-import InputForm from "../components/InputForm";
-import { useSignUpMutation } from "../services/AuthServices";
 import { useDispatch } from "react-redux";
+import { colors } from "../global/colors";
+import { useSignUpMutation } from "../services/AuthServices";
 import { setUser } from "../features/User/UserSlice";
 import { signupSchema } from "../validations/singUpSchema";
-
-
+import SubmitButton from "../components/SubmitButton";
+import InputForm from "../components/InputForm";
 
 const Signup = ({ navigation }) => {
     const [email, setEmail] = useState("");
@@ -17,7 +15,6 @@ const Signup = ({ navigation }) => {
     const [errorPassword, setErrorPassword] = useState("");
     const [confirmPassword, setconfirmPassword] = useState("");
     const [errorConfirmPassword, setErrorConfirmPassword] = useState("");
-
     const dispatch = useDispatch()
     const [triggerSignUp, result] = useSignUpMutation()
 
@@ -35,15 +32,12 @@ const Signup = ({ navigation }) => {
 
     const onSubmit = () => {
         try {
-
             setErrorMail("");
             setErrorPassword("");
             setErrorConfirmPassword("");
             signupSchema.validateSync({ email, password, confirmPassword })
             triggerSignUp({ email, password, returnSecureToken: true })
-
         } catch (err) {
-
             console.log("Entro al signup del error");
             console.log(err.path);
             console.log(err.message);
@@ -57,7 +51,6 @@ const Signup = ({ navigation }) => {
                 default:
                     break;
             }
-
         }
     }
 

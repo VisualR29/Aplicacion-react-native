@@ -1,27 +1,28 @@
-//MUCHO CODIGO//
-
-//Aqui va más codigo de SQLite
-
+import { useState, useEffect } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { colors } from "../global/colors";
+import { setUser } from "../features/User/UserSlice";
+import { useSignInMutation } from "../services/AuthServices";
+import { useDB } from "../Hooks/useDB";
 import InputForm from "../components/InputForm";
 import SubmitButton from "../components/SubmitButton";
-import { useSignInMutation } from "../services/AuthServices";
-import { useDispatch } from "react-redux";
-import { setUser } from "../features/User/UserSlice";
-
 
 const Login = ({ navigation }) => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const dispatch = useDispatch()
-
     const [triggerSignIn, result] = useSignInMutation()
-
+    const { insertSession } = useDB();
 
     useEffect(() => {
-        if (result.isSuccess) {
+        console.log("Holiii soy el insert del Login")
+        if (result?.data && result.isSuccess) {
+            insertSession({
+                email: result.data.email,
+                localId: result.data.localId,
+                token: result.data.idToken,
+            })
             dispatch(
                 setUser({
                     email: result.data.email,

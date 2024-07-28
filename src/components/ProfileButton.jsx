@@ -1,28 +1,35 @@
 import { Pressable, StyleSheet, Text } from "react-native";
 import { colors } from "../global/colors";
 
-const SubmitButton = ({ onPress, title }) => {
+const ProfileButton = ({
+    title = "",
+    onPress = () => { },
+    color = colors.green1,
+}) => {
     return (
-        <Pressable onPress={onPress} style={styles.button}>
+        <Pressable
+            style={{ ...styles.button, backgroundColor: color }}
+            onPress={onPress}
+        >
             <Text style={styles.text}>{title}</Text>
         </Pressable>
     );
 };
 
-export default SubmitButton;
+export default ProfileButton;
 
 const styles = StyleSheet.create({
     button: {
+        width: "80%",
+        borderWidth: 1,
         backgroundColor: colors.green1,
-        borderRadius: 6,
         justifyContent: "center",
         alignItems: "center",
-        padding: 8,
-        width: "60%",
+        padding: 8
     },
     text: {
-        color: colors.gray,
         fontFamily: "MyFont",
-        fontSize: 22,
+        fontSize: 18,
+        color: colors.green2,
     },
 });

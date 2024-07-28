@@ -2,7 +2,7 @@ import { Text, View, StyleSheet } from "react-native";
 import { colors } from "../global/colors";
 import Button from "../components/Button";
 
-const MainScreen = ({ navigation }) => {
+const MainScreen = () => {
     return (
         <>
             <View style={[styles.container, { flex: 1 }]}>
@@ -16,7 +16,6 @@ const MainScreen = ({ navigation }) => {
                 <Button link={"Estadisticas"} text={"Estadisticas"}/>
             </View>
             <View style={[styles.container, { flex: 1 }]}>
-
             </View>
         </>
     )
@@ -33,9 +32,6 @@ const styles = StyleSheet.create({
     },
     month: {
         fontSize: 18,
-        // fontFamily: 'Opensans'
-
-
     },
     button: {
         backgroundColor: colors.beige2,

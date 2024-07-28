@@ -1,8 +1,7 @@
 import { Text, View, TouchableWithoutFeedback, StyleSheet } from "react-native";
-import Button from "../components/Button";
 import { colors } from "../global/colors";
 
-const WelcomeScreen = ({navigation}) => {
+const WelcomeScreen = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Mis Finanzas</Text>
@@ -12,7 +11,6 @@ const WelcomeScreen = ({navigation}) => {
                     <Text style={styles.buttonText}>Iniciar</Text>
                 </View>
             </TouchableWithoutFeedback>
-            {/* <Button link='Main' text='Iniciar' /> */}
             <Text style={styles.version}>-Versión 0.3-</Text>
         </View>
     )
@@ -21,7 +19,6 @@ const WelcomeScreen = ({navigation}) => {
 const styles = StyleSheet.create({
     container: {
         flexGrow: 1,
-        //marginTop: Constants.statusBarHeight,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: colors.green2,
@@ -55,7 +52,6 @@ const styles = StyleSheet.create({
     version: {
         fontSize: 14,
         color: colors.black,
-        // fontFamily: 'Opensans'
     },
 });
 

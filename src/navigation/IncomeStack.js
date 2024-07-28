@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Income from "../screens/income/Income";
 import { IncomeForm } from "../screens/income/IncomeForm"
+import Income from "../screens/income/Income";
 
 const Stack = createNativeStackNavigator();
 

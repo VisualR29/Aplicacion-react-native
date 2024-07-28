@@ -1,7 +1,7 @@
 import { Alert } from "react-native";
-import Header from "../../components/Header"
-import IncomeFormItem from "../../components/income/IncomeFormItem";
 import { useNavigation } from "@react-navigation/native";
+import Header from "../../components/Header";
+import IncomeFormItem from "../../components/income/IncomeFormItem";
 
 export const IncomeForm = () => {
 

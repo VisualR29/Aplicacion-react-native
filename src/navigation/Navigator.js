@@ -1,40 +1,37 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useSelector } from 'react-redux';
-import AuthStack from './AuthStack';
-import { useState } from 'react';
 import { useEffect } from 'react';
-import { getSession } from '../persistence';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { NavigationContainer } from '@react-navigation/native';
+import { setUser } from '../features/User/UserSlice';
+import { useDB } from '../Hooks/useDB';
+import AuthStack from './AuthStack';
 import AppNavigator from './AppNavigator';
-//importa setUser!!!
 
 export default function Navigator() {
 
-    //Codigo de SQLite
-    // const dispatch = useDispatch()
-    // useEffect(() => {
-    //     (async () => {
-    //         try {
-    //             const response = await getSession()
-    //             if (response.rows.length) {
-    //                 const user = response.rows._array[0]
-    //                 dispatch(setUser({
-    //                     email: user.email,
-    //                     localId: user.localId,
-    //                     idToken: user.idToken,
-    //                 }))
-    //             }
-    //         } catch (error) {
-    //             console.log(error)
-    //         }
-    //     })()
-    // })
-
-    // const [user, setUser] = useState(null)
-    // console.log(useSelector((state) => state.auth.value))
+    const dispatch = useDispatch()
     const { user } = useSelector((state) => state.auth.value)
-    
+    const { getSession } = useDB()
+
+    useEffect(() => {
+        (async () => {
+            try {
+                const response = await getSession();
+                if (response) {
+                    const user = response;
+                    dispatch(
+                        setUser({
+                            email: user.email,
+                            localId: user.localId,
+                            idToken: user.token,
+                        })
+                    );
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        })();
+    });
+
     return (
         <NavigationContainer>
             {user ? <AppNavigator /> : <AuthStack/>}

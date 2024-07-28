@@ -1,26 +1,20 @@
-import { useCallback } from 'react';
+import { useEffect } from 'react';
 import { StyleSheet, Platform, StatusBar, SafeAreaView } from 'react-native';
 import { Provider } from 'react-redux';
 import { useFonts } from 'expo-font';
-import * as SplashScreen from 'expo-splash-screen';
-import { initSQLiteDB } from './src/persistence/index';
-import store from './src/store/index'
 import { colors } from './src/global/colors';
+import { useDB } from './src/Hooks/useDB';
 import Navigator from './src/navigation/Navigator';
-
-// (async () => {
-//   try {
-//     const response = await initSQLiteDB()
-//     console.log({ responseCreatingDB: response })
-//     console.log("DB Inicilized")
-//   } catch (error) {
-//     console.log({ errorCreatingDB: error })
-//   }
-// })()
+import store from './src/store/index';
 
 export default function App() {
 
-  // Configuración de fuente
+  const { initDB } = useDB()
+
+  useEffect(() => {
+    initDB();
+  }, [])
+
   const [fontsLoaded, fontError] = useFonts({
     'MyFont': require('./assets/PlayfairDisplay-VariableFont_wght.ttf'),
     'MyFontItalic': require('./assets/PlayfairDisplay-Italic-VariableFont_wght.ttf'),

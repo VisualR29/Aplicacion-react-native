@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Savings from "../screens/saving/Savings";
 import { SavingForm }  from "../screens/saving/SavingForm";
+import Savings from "../screens/saving/Savings";
 
 const Stack = createNativeStackNavigator();
 

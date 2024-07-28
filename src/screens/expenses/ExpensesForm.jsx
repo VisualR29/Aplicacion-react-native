@@ -1,5 +1,5 @@
-import Header from "../../components/Header"
+import Header from "../../components/Header";
 
 export const ExpensesForm = () => {
-    return (<Header title={"EXPENSESFORM"}/>)
+    return (<Header title={"EXPENSESFORM"} />)
 }
