@@ -1,8 +1,8 @@
-# My React Native App
+# Mis Finanzas App
 
 ## Descripción
 
-My React Native App es una aplicación móvil desarrollada con React Native que permite a los usuarios gestionar sus ingresos y gastos de manera eficiente. La aplicación ofrece una interfaz intuitiva para registrar, visualizar y analizar ingresos y gastos, así como gestionar objetivos de ahorro. 
+Mis Finanzas App es una aplicación móvil desarrollada con React Native que permite a los usuarios gestionar sus ingresos y gastos de manera eficiente. La aplicación ofrece una interfaz intuitiva para registrar, visualizar sus ingresos y gastos, así como gestionar objetivos de ahorro. 
 
 ## Características
 
@@ -44,3 +44,6 @@ npm start
 
 ### 4. Abrir la app
 Abre la aplicación con algún simulador IOs / Android Studio / Web
+
+## Siguiente
+Planeo seguir actualizando mi aplicación para incluir estadísticas que ayuden a los usuarios a comprender y gestionar mejor su dinero. Además, me gustaría optimizar la eficiencia de la aplicación y mejorar la interfaz para que sea más intuitiva y libre de inconvenientes para los usuarios.
