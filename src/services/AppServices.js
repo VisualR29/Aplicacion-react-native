@@ -6,6 +6,7 @@ export const appApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: baseUrl }),
     tagTypes: ["Saving", "Income", "Expenses", "profileImageGet"],
     endpoints: (builder) => ({
+        //Savings
         getSavings: builder.query({
             query: () => `savings.json`,
             transformResponse: (res) => {
@@ -21,6 +22,15 @@ export const appApi = createApi({
             }),
             invalidatesTags: ["Saving"],
         }),
+        updateSaving: builder.mutation({
+            query: ({ id, ...saving }) => ({
+                url: `savings/${id}.json`,
+                method: "PUT",
+                body: saving,
+            }),
+            invalidatesTags: ["Saving"],
+        }),
+        //Expenses
         getExpenses: builder.query({
             query: () => `expenses.json`,
             transformResponse: (res) => {
@@ -36,6 +46,15 @@ export const appApi = createApi({
             }),
             invalidatesTags: ["Expenses"],
         }),
+        updateExpense: builder.mutation({
+            query: ({ id, ...expense }) => ({
+                url: `expenses/${id}.json`,
+                method: "PUT",
+                body: expense,
+            }),
+            invalidatesTags: ["Expense"],
+        }),
+        //Income
         getIncome: builder.query({
             query: () => `income.json`,
             transformResponse: (res) => {
@@ -51,12 +70,15 @@ export const appApi = createApi({
             }),
             invalidatesTags: ["Income"],
         }),
-        // getIncome: builder.query({
-        //     query: (date) => `income.json?orderBy="fecha"&equalTo="${date}"`
-        // }),
-        // getIncomeId: builder.query({
-        //     query: (incomeId) => `income.json?orderBy="idingreso"&equalTo=${incomeId}`
-        // }),
+        updateIncome: builder.mutation({
+            query: ({ id, ...income }) => ({
+                url: `income/${id}.json`,
+                method: "PUT",
+                body: income,
+            }),
+            invalidatesTags: ["Income"],
+        }),
+        //Profile
         getProfileimage: builder.query({
             query: (localId) => `profileImages/${localId}.json`,
             providesTags: ["profileImageGet"],
@@ -77,10 +99,13 @@ export const appApi = createApi({
 export const {
     useGetSavingsQuery,
     usePostSavingMutation,
+    useUpdateSavingMutation,
     useGetExpensesQuery,
     usePostExpenseMutation,
+    useUpdateExpenseMutation,
     useGetIncomeQuery,
     usePostIncomeMutation,
+    useUpdateIncomeMutation,
     useGetProfileimageQuery,
     usePostProfileImageMutation
 } = appApi;
