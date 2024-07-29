@@ -1,13 +1,16 @@
 import { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { colors } from '../../global/colors';
+import { usePostIncomeMutation } from '../../services/AppServices';
 
-const IncomeFormItem = ({ addIncome }) => {
+const IncomeFormItem = ({ goBack }) => {
     const [datePickerVisible, setDatePickerVisible] = useState(false);
+    const [triggerPostIncome] = usePostIncomeMutation();
+
 
     const IncomeSchema = Yup.object().shape({
         monto: Yup.number().required('Monto es requerido'),
@@ -32,11 +35,31 @@ const IncomeFormItem = ({ addIncome }) => {
         return [year, month, day].join('-');
     };
 
+    const handleSubmitIncome = async (values, { resetForm }) => {
+        try {
+            await triggerPostIncome({
+                nombre: values.nombre,
+                monto: Number(values.monto),
+                recibidoen: values.recibidoen,
+                categoria: values.categoria,
+                frecuencia: values.frecuencia,
+                fecha: formatDate(values.fecha),
+            });
+            resetForm();
+            Alert.alert('Ingreso agregado', 'El nuevo ingreso ha sido agregado correctamente.');
+            goBack();
+        } catch (error) {
+            Alert.alert('Error', 'El ingreso no se pudo agregar, intente más tarde.');
+            console.error(error);
+            goBack();
+        }
+    };
+
     return (
         <Formik
             initialValues={{ monto: '', nombre: '', recibidoen: '', categoria: '', frecuencia: '', fecha: new Date() }}
             validationSchema={IncomeSchema}
-            onSubmit={(values) => addIncome({ ...values, fecha: formatDate(values.fecha) })}
+            onSubmit={(values, actions) => handleSubmitIncome(values, actions)}
         >
             {({ handleChange, handleBlur, handleSubmit, setFieldValue, values, errors, touched }) => (
                 <View style={styles.container}>
@@ -126,9 +149,10 @@ const IncomeFormItem = ({ addIncome }) => {
                     {touched.fecha && errors.fecha && <Text style={styles.error}>{errors.fecha}</Text>}
 
                     <Button
-                        color={colors.beige300}
                         onPress={handleSubmit}
-                        title="Agregar Ingreso" />
+                        color={colors.beige300}
+                        title='Agregar Ingreso'
+                    />
                 </View>
             )}
         </Formik>

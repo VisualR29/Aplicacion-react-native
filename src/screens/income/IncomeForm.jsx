@@ -8,18 +8,15 @@ export const IncomeForm = () => {
 
     const navigation = useNavigation()
 
-    const addIncome = (income) => {
-        // Lógica para agregar el ingreso a la base de datos o al estado
-        // Por ejemplo, puedes hacer una llamada a la API aquí
+    const goBack = (saving) => {
         console.log('Nuevo Ingreso:', income);
-        Alert.alert('Ingreso agregado', 'El nuevo ingreso ha sido agregado correctamente.');
         navigation.goBack();
     };
 
     return (
         <View style={styles.container}>
             <Header title={"Nuevo Ingreso"} />
-            <IncomeFormItem addIncome={addIncome} />
+            <IncomeFormItem addIncome={goBack} />
         </View>
     )
 }

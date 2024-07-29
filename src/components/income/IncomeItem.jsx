@@ -2,6 +2,7 @@ import { Text, StyleSheet, View } from 'react-native'
 import { colors } from '../../global/colors';
 
 const IncomeItem = ({ income }) => {
+    
     return (
         <View style={styles.container}>
             <Text style={styles.nombre}>{income.nombre}</Text>

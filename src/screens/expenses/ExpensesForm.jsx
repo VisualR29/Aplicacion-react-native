@@ -8,18 +8,15 @@ export const ExpensesForm = () => {
 
     const navigation = useNavigation()
 
-    const addExpense = (expense) => {
-        // Lógica para agregar el gasto a la base de datos o al estado
-        // Por ejemplo, puedes hacer una llamada a la API aquí
+    const goBack = (expense) => {
         console.log('Nuevo Gasto:', expense);
-        Alert.alert('Gasto agregado', 'El nuevo gasto ha sido agregado correctamente.');
         navigation.goBack();
     };
 
     return (
         <View style={styles.container}>
             <Header title={"Nuevo Gasto"} />
-            <ExpensesFormItem addExpense={addExpense} />
+            <ExpensesFormItem addExpense={goBack} />
         </View>
     )
 }

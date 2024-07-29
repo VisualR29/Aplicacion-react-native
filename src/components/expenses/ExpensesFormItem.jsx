@@ -1,13 +1,16 @@
 import { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { colors } from '../../global/colors';
+import { usePostExpenseMutation } from '../../services/AppServices';
 
-const ExpensesFormItem = ({ addExpense }) => {
+const ExpensesFormItem = ({ goBack }) => {
+
     const [datePickerVisible, setDatePickerVisible] = useState(false);
+    const [triggerPostExpenese] = usePostExpenseMutation();
 
     const ExpenseSchema = Yup.object().shape({
         monto: Yup.number().required('Monto es requerido'),
@@ -32,11 +35,30 @@ const ExpensesFormItem = ({ addExpense }) => {
         return [year, month, day].join('-');
     };
 
+    const handleSubmitExpense = async (values, { resetForm }) => {
+        try {
+            await triggerPostExpenese({
+                nombre: values.nombre,
+                monto: Number(values.monto),
+                tipopago: values.tipopago,
+                categoria: values.categoria,
+                frecuencia: values.frecuencia,
+                fecha: formatDate(values.fecha),
+            });
+            resetForm();
+            Alert.alert('Gasto agregado', 'El nuevo gasto ha sido agregado correctamente.');
+            goBack();
+        } catch (error) {
+            Alert.alert('Error', 'El gasto no se pudo agregar, intente más tarde.');
+        }
+    };
+
+
     return (
         <Formik
             initialValues={{ monto: '', nombre: '', tipopago: '', categoria: '', frecuencia: '', fecha: new Date() }}
             validationSchema={ExpenseSchema}
-            onSubmit={(values) => addExpense({ ...values, fecha: formatDate(values.fecha) })}
+            onSubmit={(values, actions) => handleSubmitExpense(values, actions)}
         >
             {({ handleChange, handleBlur, handleSubmit, setFieldValue, values, errors, touched }) => (
                 <View style={styles.container}>

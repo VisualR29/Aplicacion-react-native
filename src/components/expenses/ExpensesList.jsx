@@ -16,7 +16,7 @@ const ExpensesList = () => {
                     <ExpensesItem
                         expense={item}
                     />}
-                keyExtractor={item => item.idgasto.toString()}
+                keyExtractor={item => item.idgasto}
             />
         </View>
     )

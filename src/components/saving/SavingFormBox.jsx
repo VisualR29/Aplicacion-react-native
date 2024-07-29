@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 import { colors } from '../../global/colors';
 import { usePostSavingMutation } from '../../services/AppServices';
 
-const SavingFormBox = ({goBack}) => {
+const SavingFormBox = ({ goBack }) => {
 
     const [datePickerVisible, setDatePickerVisible] = useState(false);
     const [triggerPostSaving] = usePostSavingMutation();
@@ -34,9 +34,9 @@ const SavingFormBox = ({goBack}) => {
         try {
             await triggerPostSaving({
                 nombre: values.nombre,
-                meta: values.meta,
+                meta: Number(values.meta),
                 fechameta: formatDate(values.fechameta),
-                cantidad: values.cantidad,
+                cantidad: Number(values.cantidad),
             });
             resetForm();
             Alert.alert('Ahorro agregado', 'El nuevo ahorro ha sido agregado correctamente.');
@@ -111,7 +111,7 @@ const SavingFormBox = ({goBack}) => {
                     <Button
                         onPress={handleSubmit}
                         color={colors.beige300}
-                        title={'Agregar Ahorro'}
+                        title='Agregar Ahorro'
                     />
                 </View>
             )}

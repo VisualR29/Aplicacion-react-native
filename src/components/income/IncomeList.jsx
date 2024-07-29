@@ -13,10 +13,8 @@ const IncomeList = () => {
                 showsVerticalScrollIndicator={false}
                 data={income}
                 renderItem={({ item }) =>
-                    <IncomeItem
-                        income={item}
-                    />}
-                keyExtractor={item => item.idingreso.toString()}
+                    <IncomeItem income={item} />}
+                keyExtractor={item => item.idingreso}
             />
         </View>
     )
