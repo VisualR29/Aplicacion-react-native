@@ -1,19 +1,11 @@
-import { useEffect, useState } from 'react';
 import { StyleSheet, View, FlatList } from 'react-native'
 import { colors } from '../../global/colors'
 import SavingBox from './SavingBox'
-import savingsData from '../../data/savings.json'
 import { useGetSavingsQuery } from '../../services/AppServices';
 
 const SavingList = () => {
 
-    // const {data: savings} = useGetSavingsQuery()
-
-    const [savings, setSavings] = useState([]);
-
-    useEffect(() => {
-        setSavings(savingsData);
-    }, []);
+    const {data: savings, isLoading, error} = useGetSavingsQuery()
 
     return (
         <View style={styles.container}>
@@ -24,7 +16,7 @@ const SavingList = () => {
                     <SavingBox
                         saving={item}
                     />}
-                keyExtractor={item => item.idahorro.toString()}
+                keyExtractor={item => item.idahorro}
             />
         </View>
     )

@@ -9,6 +9,8 @@ import { useGetProfileimageQuery, usePostProfileImageMutation } from '../service
 
 const ImageSelector = ({ navigation }) => {
 
+    console.log(navigation)
+
     const [image, setImage] = useState(null)
     const [isImageFromCamera, setIsImageFromCamera] = useState(false);
     const dispatch = useDispatch()

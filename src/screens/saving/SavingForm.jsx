@@ -1,4 +1,4 @@
-import { Alert, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Header from "../../components/Header";
 import SavingFormBox from "../../components/saving/SavingFormBox";
@@ -8,18 +8,15 @@ export const SavingForm = () => {
 
     const navigation = useNavigation()
 
-    const addSaving = (saving) => {
-        // Lógica para agregar el ingreso a la base de datos o al estado
-        // Por ejemplo, puedes hacer una llamada a la API aquí
+    const goBack = (saving) => {
         console.log('Nuevo Ahorro:', saving);
-        Alert.alert('Ahorro agregado', 'El nuevo ahorro ha sido agregado correctamente.');
         navigation.goBack();
     };
 
     return (
         <View style={styles.container}>
             <Header title={"Nuevo Ahorro"} />
-            <SavingFormBox addSaving={addSaving} />
+            <SavingFormBox goBack={goBack} />
         </View>
     )
 }

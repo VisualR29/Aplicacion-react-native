@@ -1,16 +1,11 @@
-import { useEffect, useState } from 'react';
 import { StyleSheet, View, FlatList } from 'react-native';
 import { colors } from '../../global/colors';
+import { useGetExpensesQuery } from '../../services/AppServices';
 import ExpensesItem from './ExpensesItem';
-import expensesData from '../../data/expenses.json';
 
 const ExpensesList = () => {
 
-    const [expenses, setExpenses] = useState([]);
-
-    useEffect(() => {
-        setExpenses(expensesData);
-    }, []);
+    const { data: expenses, isLoading, error } = useGetExpensesQuery();
 
     return (
         <View style={styles.container}>

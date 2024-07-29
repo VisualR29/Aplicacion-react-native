@@ -1,16 +1,11 @@
-import { useEffect, useState } from 'react';
 import { StyleSheet, View, FlatList } from 'react-native';
 import { colors } from '../../global/colors';
+import { useGetIncomeQuery } from '../../services/AppServices';
 import IncomeItem from './IncomeItem';
-import incomeData from '../../data/income.json';
 
 const IncomeList = () => {
 
-    const [income, setIncome] = useState([]);
-
-    useEffect(() => {
-        setIncome(incomeData);
-    }, []);
+    const { data: income, isLoading, error } = useGetIncomeQuery();
 
     return (
         <View style={styles.container}>

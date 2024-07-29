@@ -1,18 +1,21 @@
 import { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { colors } from '../../global/colors';
+import { usePostSavingMutation } from '../../services/AppServices';
 
-const NewSavingsForm = ({ addSaving }) => {
+const SavingFormBox = ({goBack}) => {
+
     const [datePickerVisible, setDatePickerVisible] = useState(false);
+    const [triggerPostSaving] = usePostSavingMutation();
 
     const SavingSchema = Yup.object().shape({
         nombre: Yup.string().required('Nombre del ahorro es requerido'),
         meta: Yup.number().required('Meta del ahorro es requerida'),
-        cantidadAhorrada: Yup.number().required('Cantidad ahorrada es requerida'),
-        fechaMeta: Yup.date().required('Fecha meta es requerida'),
+        cantidad: Yup.number().required('Cantidad ahorrada es requerida'),
+        fechameta: Yup.date().required('Fecha meta es requerida'),
     });
 
     const formatDate = (date) => {
@@ -21,19 +24,35 @@ const NewSavingsForm = ({ addSaving }) => {
         let day = '' + d.getDate();
         const year = d.getFullYear();
 
-        if (month.length < 2)
-            month = '0' + month;
-        if (day.length < 2)
-            day = '0' + day;
+        if (month.length < 2) month = '0' + month;
+        if (day.length < 2) day = '0' + day;
 
         return [year, month, day].join('-');
     };
 
+    const handleSubmitSaving = async (values, { resetForm }) => {
+        try {
+            await triggerPostSaving({
+                nombre: values.nombre,
+                meta: values.meta,
+                fechameta: formatDate(values.fechameta),
+                cantidad: values.cantidad,
+            });
+            resetForm();
+            Alert.alert('Ahorro agregado', 'El nuevo ahorro ha sido agregado correctamente.');
+            goBack();
+        } catch (error) {
+            Alert.alert('Error', 'El ahorro no se pudo agregar, intente más tarde.');
+            console.error(error);
+            goBack();
+        }
+    };
+
     return (
         <Formik
-            initialValues={{ nombre: '', meta: '', cantidadAhorrada: '', fechaMeta: new Date() }}
+            initialValues={{ nombre: '', meta: '', cantidad: '', fechameta: new Date() }}
             validationSchema={SavingSchema}
-            onSubmit={(values) => addSaving({ ...values, fechaMeta: formatDate(values.fechaMeta) })}
+            onSubmit={(values, actions) => handleSubmitSaving(values, actions)}
         >
             {({ handleChange, handleBlur, handleSubmit, setFieldValue, values, errors, touched }) => (
                 <View style={styles.container}>
@@ -58,41 +77,42 @@ const NewSavingsForm = ({ addSaving }) => {
 
                     <Text>Cantidad ahorrada:</Text>
                     <TextInput
-                        onChangeText={handleChange('cantidadAhorrada')}
-                        onBlur={handleBlur('cantidadAhorrada')}
-                        value={values.cantidadAhorrada}
+                        onChangeText={handleChange('cantidad')}
+                        onBlur={handleBlur('cantidad')}
+                        value={values.cantidad}
                         keyboardType='numeric'
                         style={styles.input}
                     />
-                    {touched.cantidadAhorrada && errors.cantidadAhorrada && <Text style={styles.error}>{errors.cantidadAhorrada}</Text>}
+                    {touched.cantidad && errors.cantidad && <Text style={styles.error}>{errors.cantidad}</Text>}
 
                     <Text>Fecha meta:</Text>
                     <TouchableOpacity onPress={() => setDatePickerVisible(true)}>
                         <TextInput
-                            value={formatDate(values.fechaMeta)}
+                            value={formatDate(values.fechameta)}
                             style={styles.input}
                             editable={false}
                         />
                     </TouchableOpacity>
                     {datePickerVisible && (
                         <DateTimePicker
-                            value={values.fechaMeta}
+                            value={values.fechameta}
                             mode="date"
                             display="default"
                             onChange={(event, selectedDate) => {
                                 setDatePickerVisible(false);
                                 if (selectedDate) {
-                                    setFieldValue('fechaMeta', selectedDate);
+                                    setFieldValue('fechameta', selectedDate);
                                 }
                             }}
                         />
                     )}
-                    {touched.fechaMeta && errors.fechaMeta && <Text style={styles.error}>{errors.fechaMeta}</Text>}
+                    {touched.fechameta && errors.fechameta && <Text style={styles.error}>{errors.fechameta}</Text>}
 
                     <Button
-                        color={colors.beige300}
                         onPress={handleSubmit}
-                        title="Agregar Ahorro" />
+                        color={colors.beige300}
+                        title={'Agregar Ahorro'}
+                    />
                 </View>
             )}
         </Formik>
@@ -116,4 +136,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default NewSavingsForm;
+export default SavingFormBox;
