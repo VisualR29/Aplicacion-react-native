@@ -1,11 +1,17 @@
-import { StyleSheet, View, FlatList } from 'react-native';
+import { StyleSheet, View, FlatList, Text } from 'react-native';
 import { colors } from '../../global/colors';
 import { useGetExpensesQuery } from '../../services/AppServices';
 import ExpensesItem from './ExpensesItem';
+import { useSelector } from 'react-redux';
 
 const ExpensesList = () => {
+    const localId = useSelector((state) => state.auth.value.localId);
+    const { data: expenses, isLoading, error } = useGetExpensesQuery(localId);
 
-    const { data: expenses, isLoading, error } = useGetExpensesQuery();
+    console.log(error)
+
+    if (isLoading) return <View><Text>Loading...</Text></View>;
+    if (error) return <View><Text>Error: {error.message}</Text></View>;
 
     return (
         <View style={styles.container}>
@@ -16,7 +22,8 @@ const ExpensesList = () => {
                     <ExpensesItem
                         expense={item}
                     />}
-                keyExtractor={item => item.idgasto}
+                keyExtractor={item => item.id}
+                style={styles.list}
             />
         </View>
     )
@@ -28,7 +35,10 @@ const styles = StyleSheet.create({
         backgroundColor: colors.green400,
         justifyContent: "center",
         alignItems: "center",
-    }
+    },
+    list: {
+        width: '75%',
+    },
 });
 
 export default ExpensesList;

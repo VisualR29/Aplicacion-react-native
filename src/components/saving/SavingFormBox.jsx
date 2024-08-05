@@ -5,9 +5,10 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { colors } from '../../global/colors';
 import { usePostSavingMutation } from '../../services/AppServices';
+import { useSelector } from 'react-redux';
 
 const SavingFormBox = ({ goBack }) => {
-
+    const localId = useSelector((state) => state.auth.value.localId); 
     const [datePickerVisible, setDatePickerVisible] = useState(false);
     const [triggerPostSaving] = usePostSavingMutation();
 
@@ -33,10 +34,13 @@ const SavingFormBox = ({ goBack }) => {
     const handleSubmitSaving = async (values, { resetForm }) => {
         try {
             await triggerPostSaving({
-                nombre: values.nombre,
-                meta: Number(values.meta),
-                fechameta: formatDate(values.fechameta),
-                cantidad: Number(values.cantidad),
+                localId,
+                newSaving: {
+                    nombre: values.nombre,
+                    meta: Number(values.meta),
+                    fechameta: formatDate(values.fechameta),
+                    cantidad: Number(values.cantidad),
+                }
             });
             resetForm();
             Alert.alert('Ahorro agregado', 'El nuevo ahorro ha sido agregado correctamente.');

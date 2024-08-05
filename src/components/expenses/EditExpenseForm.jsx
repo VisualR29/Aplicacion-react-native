@@ -4,12 +4,15 @@ import { Picker } from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { useUpdateExpenseMutation } from '../../services/AppServices';
+import { useDeleteExpenseMutation, useUpdateExpenseMutation } from '../../services/AppServices';
 import { colors } from '../../global/colors';
+import { useSelector } from 'react-redux';
 
 const EditExpenseForm = ({ expense, onClose }) => {
+    const localId = useSelector((state) => state.auth.value.localId);
     const [datePickerVisible, setDatePickerVisible] = useState(false);
     const [updateExpense] = useUpdateExpenseMutation();
+    const [deleteExpense] = useDeleteExpenseMutation();
 
     const ExpenseSchema = Yup.object().shape({
         monto: Yup.number().required('Monto es requerido'),
@@ -35,6 +38,7 @@ const EditExpenseForm = ({ expense, onClose }) => {
     const handleSubmitExpense = async (values) => {
         try {
             await updateExpense({
+                localId,
                 id: expense.id,
                 ...values,
                 monto: Number(values.monto),
@@ -46,6 +50,35 @@ const EditExpenseForm = ({ expense, onClose }) => {
             Alert.alert('Error', 'El gasto no se pudo actualizar, intente más tarde.');
             console.error(error);
         }
+    };
+
+    const handleDeleteExpense = async () => {
+        Alert.alert(
+            "Confirmar eliminación",
+            "¿Estás seguro de que quieres eliminar este gasto?",
+            [
+                {
+                    text: "Cancelar",
+                    style: "cancel"
+                },
+                {
+                    text: "Eliminar",
+                    onPress: async () => {
+                        try {
+                            await deleteExpense({
+                                localId,
+                                id: expense.id
+                            });
+                            onClose();
+                        } catch (error) {
+                            console.error(error);
+                            onClose();
+                        }
+                    },
+                    style: "destructive"
+                }
+            ]
+        );
     };
 
     return (
@@ -63,6 +96,15 @@ const EditExpenseForm = ({ expense, onClose }) => {
         >
             {({ handleChange, handleBlur, handleSubmit, setFieldValue, values, errors, touched }) => (
                 <View style={styles.container}>
+                    <Text>Nombre:</Text>
+                    <TextInput
+                        onChangeText={handleChange('nombre')}
+                        onBlur={handleBlur('nombre')}
+                        value={values.nombre}
+                        style={styles.input}
+                    />
+                    {touched.nombre && errors.nombre && <Text style={styles.error}>{errors.nombre}</Text>}
+
                     <Text>Monto:</Text>
                     <TextInput
                         onChangeText={handleChange('monto')}
@@ -72,15 +114,6 @@ const EditExpenseForm = ({ expense, onClose }) => {
                         style={styles.input}
                     />
                     {touched.monto && errors.monto && <Text style={styles.error}>{errors.monto}</Text>}
-
-                    <Text>Nombre:</Text>
-                    <TextInput
-                        onChangeText={handleChange('nombre')}
-                        onBlur={handleBlur('nombre')}
-                        value={values.nombre}
-                        style={styles.input}
-                    />
-                    {touched.nombre && errors.nombre && <Text style={styles.error}>{errors.nombre}</Text>}
 
                     <Text>Tipo de pago:</Text>
                     <Picker
@@ -173,9 +206,13 @@ const EditExpenseForm = ({ expense, onClose }) => {
 
                     <Button
                         onPress={handleSubmit}
-                        color={colors.beige300}
-                        title='Guardar Cambios'
-                    />
+                        title="Guardar Cambios"
+                        color={colors.beige300} />
+                    <Text></Text>
+                    <Button
+                        onPress={handleDeleteExpense}
+                        title="Eliminar Gasto"
+                        color="red" />
                 </View>
             )}
         </Formik>

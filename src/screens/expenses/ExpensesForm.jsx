@@ -8,15 +8,14 @@ export const ExpensesForm = () => {
 
     const navigation = useNavigation()
 
-    const goBack = (expense) => {
-        console.log('Nuevo Gasto:', expense);
+    const goBack = () => {
         navigation.goBack();
     };
 
     return (
         <View style={styles.container}>
             <Header title={"Nuevo Gasto"} />
-            <ExpensesFormItem addExpense={goBack} />
+            <ExpensesFormItem goBack={goBack} />
         </View>
     )
 }

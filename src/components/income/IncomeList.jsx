@@ -1,11 +1,15 @@
-import { StyleSheet, View, FlatList } from 'react-native';
+import { StyleSheet, View, FlatList, Text } from 'react-native';
 import { colors } from '../../global/colors';
 import { useGetIncomeQuery } from '../../services/AppServices';
 import IncomeItem from './IncomeItem';
+import { useSelector } from 'react-redux';
 
 const IncomeList = () => {
+    const localId = useSelector((state) => state.auth.value.localId);
+    const { data: income, isLoading, error } = useGetIncomeQuery(localId);
 
-    const { data: income, isLoading, error } = useGetIncomeQuery();
+    if (isLoading) return <View><Text>Loading...</Text></View>;
+    if (error) return <View><Text>Error: {error.message}</Text></View>;
 
     return (
         <View style={styles.container}>
@@ -13,11 +17,14 @@ const IncomeList = () => {
                 showsVerticalScrollIndicator={false}
                 data={income}
                 renderItem={({ item }) =>
-                    <IncomeItem income={item} />}
-                keyExtractor={item => item.idingreso}
+                    <IncomeItem
+                        income={item}
+                    />}
+                keyExtractor={item => item.id}
+                style={styles.list}
             />
         </View>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
@@ -27,6 +34,9 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         paddingVertical: "5%",
+    },
+    list: {
+        width: '75%',
     }
 });
 

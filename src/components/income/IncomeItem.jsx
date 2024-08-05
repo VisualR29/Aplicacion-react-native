@@ -1,10 +1,9 @@
 import { useState } from 'react';
-import { Text, StyleSheet, View, TouchableOpacity, Modal, Button } from 'react-native'
+import { Text, StyleSheet, View, TouchableOpacity, Modal, Button } from 'react-native';
 import { colors } from '../../global/colors';
 import EditIncomeForm from './EditIncomeForm';
 
 const IncomeItem = ({ income }) => {
-
     const [modalVisible, setModalVisible] = useState(false);
 
     const handlePress = () => {
@@ -16,8 +15,7 @@ const IncomeItem = ({ income }) => {
     };
 
     return (
-        <TouchableOpacity
-            onPress={handlePress}>
+        <TouchableOpacity onPress={handlePress}>
             <View style={styles.container}>
                 <Text style={styles.nombre}>{income.nombre}</Text>
                 <Text>Monto: ${income.monto.toFixed(2)}</Text>
@@ -41,7 +39,7 @@ const IncomeItem = ({ income }) => {
                 </View>
             </Modal>
         </TouchableOpacity>
-    )
+    );
 };
 
 const styles = StyleSheet.create({

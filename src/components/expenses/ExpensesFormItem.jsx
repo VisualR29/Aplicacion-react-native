@@ -6,9 +6,10 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { colors } from '../../global/colors';
 import { usePostExpenseMutation } from '../../services/AppServices';
+import { useSelector } from 'react-redux';
 
 const ExpensesFormItem = ({ goBack }) => {
-
+    const localId = useSelector((state) => state.auth.value.localId);
     const [datePickerVisible, setDatePickerVisible] = useState(false);
     const [triggerPostExpenese] = usePostExpenseMutation();
 
@@ -38,18 +39,23 @@ const ExpensesFormItem = ({ goBack }) => {
     const handleSubmitExpense = async (values, { resetForm }) => {
         try {
             await triggerPostExpenese({
-                nombre: values.nombre,
-                monto: Number(values.monto),
-                tipopago: values.tipopago,
-                categoria: values.categoria,
-                frecuencia: values.frecuencia,
-                fecha: formatDate(values.fecha),
+                localId,
+                newExpense: {
+                    nombre: values.nombre,
+                    monto: Number(values.monto),
+                    tipopago: values.tipopago,
+                    categoria: values.categoria,
+                    frecuencia: values.frecuencia,
+                    fecha: formatDate(values.fecha),
+                }
             });
             resetForm();
             Alert.alert('Gasto agregado', 'El nuevo gasto ha sido agregado correctamente.');
             goBack();
         } catch (error) {
             Alert.alert('Error', 'El gasto no se pudo agregar, intente más tarde.');
+            console.error(error);
+            goBack();
         }
     };
 
@@ -62,6 +68,15 @@ const ExpensesFormItem = ({ goBack }) => {
         >
             {({ handleChange, handleBlur, handleSubmit, setFieldValue, values, errors, touched }) => (
                 <View style={styles.container}>
+                    <Text>Nombre:</Text>
+                    <TextInput
+                        onChangeText={handleChange('nombre')}
+                        onBlur={handleBlur('nombre')}
+                        value={values.nombre}
+                        style={styles.input}
+                    />
+                    {touched.nombre && errors.nombre && <Text style={styles.error}>{errors.nombre}</Text>}
+
                     <Text>Monto:</Text>
                     <TextInput
                         onChangeText={handleChange('monto')}
@@ -71,15 +86,6 @@ const ExpensesFormItem = ({ goBack }) => {
                         style={styles.input}
                     />
                     {touched.monto && errors.monto && <Text style={styles.error}>{errors.monto}</Text>}
-
-                    <Text>Nombre:</Text>
-                    <TextInput
-                        onChangeText={handleChange('nombre')}
-                        onBlur={handleBlur('nombre')}
-                        value={values.nombre}
-                        style={styles.input}
-                    />
-                    {touched.nombre && errors.nombre && <Text style={styles.error}>{errors.nombre}</Text>}
 
                     <Text>Tipo de pago:</Text>
                     <Picker

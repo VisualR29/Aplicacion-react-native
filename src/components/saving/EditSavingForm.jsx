@@ -1,13 +1,18 @@
+import React from 'react';
 import { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { useUpdateSavingMutation } from '../../services/AppServices';
+import { useUpdateSavingMutation, useDeleteSavingMutation } from '../../services/AppServices';
+import { useSelector } from 'react-redux';
+import { colors } from '../../global/colors';
 
 const EditSavingsForm = ({ saving, onClose }) => {
+    const localId = useSelector((state) => state.auth.value.localId);
     const [datePickerVisible, setDatePickerVisible] = useState(false);
     const [updateSaving] = useUpdateSavingMutation();
+    const [deleteSaving] = useDeleteSavingMutation();
 
     const SavingSchema = Yup.object().shape({
         nombre: Yup.string().required('Nombre del ahorro es requerido'),
@@ -31,14 +36,47 @@ const EditSavingsForm = ({ saving, onClose }) => {
     const handleSubmitSaving = async (values) => {
         try {
             await updateSaving({
+                localId,
                 id: saving.id,
                 ...values,
                 fechameta: formatDate(values.fechameta),
             });
+            Alert.alert('Ahorro actualizado', 'El ahorro ha sido actualizado correctamente.');
             onClose();
         } catch (error) {
+            Alert.alert('Error', 'El ahorro no se pudo actualizar, intente más tarde.');
             console.error(error);
+            onClose();
         }
+    };
+
+    const handleDeleteSaving = async () => {
+        Alert.alert(
+            "Confirmar eliminación",
+            "¿Estás seguro de que quieres eliminar este ahorro?",
+            [
+                {
+                    text: "Cancelar",
+                    style: "cancel"
+                },
+                {
+                    text: "Eliminar",
+                    onPress: async () => {
+                        try {
+                            await deleteSaving({
+                                localId,
+                                id: saving.id
+                            });
+                            onClose();
+                        } catch (error) {
+                            console.error(error);
+                            onClose();
+                        }
+                    },
+                    style: "destructive"
+                }
+            ]
+        );
     };
 
     return (
@@ -106,7 +144,15 @@ const EditSavingsForm = ({ saving, onClose }) => {
                     )}
                     {touched.fechameta && errors.fechameta && <Text style={styles.error}>{errors.fechameta}</Text>}
 
-                    <Button onPress={handleSubmit} title="Guardar Cambios" />
+                    <Button
+                        onPress={handleSubmit}
+                        title="Guardar Cambios"
+                        color={colors.beige300} />
+                    <Text></Text>
+                    <Button
+                        onPress={handleDeleteSaving}
+                        title="Eliminar Ahorro"
+                        color="red" />
                 </View>
             )}
         </Formik>
@@ -119,7 +165,7 @@ const styles = StyleSheet.create({
     },
     input: {
         height: 40,
-        borderColor: 'gray',
+        borderColor: colors.gray,
         borderWidth: 1,
         marginBottom: 10,
         padding: 10,
@@ -127,7 +173,7 @@ const styles = StyleSheet.create({
     error: {
         color: 'red',
         marginBottom: 10,
-    },
+    }
 });
 
 export default EditSavingsForm;

@@ -8,15 +8,14 @@ export const IncomeForm = () => {
 
     const navigation = useNavigation()
 
-    const goBack = (saving) => {
-        console.log('Nuevo Ingreso:', income);
+    const goBack = () => {
         navigation.goBack();
     };
 
     return (
         <View style={styles.container}>
             <Header title={"Nuevo Ingreso"} />
-            <IncomeFormItem addIncome={goBack} />
+            <IncomeFormItem goBack={goBack} />
         </View>
     )
 }

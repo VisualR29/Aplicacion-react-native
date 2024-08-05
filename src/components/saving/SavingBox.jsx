@@ -29,8 +29,7 @@ const SavingBox = ({ saving }) => {
                 animationType="slide"
                 transparent={true}
                 visible={modalVisible}
-                onRequestClose={handleCloseModal}
-            >
+                onRequestClose={handleCloseModal}>
                 <View style={styles.modalContainer}>
                     <View style={styles.modalContent}>
                         <EditSavingsForm saving={saving} onClose={handleCloseModal} />

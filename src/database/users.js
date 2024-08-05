@@ -1,2 +1,2 @@
-export const apiKey = "AIzaSyDC0a4okHfN9QuQwi96oG9Rbv27apw8YO4";
+export const apiKey = "AIzaSyCvugQpzNVvE1SWrR0EPaCe80shZT5t87Y";
 export const baseAuthUrl = "https://identitytoolkit.googleapis.com/v1";

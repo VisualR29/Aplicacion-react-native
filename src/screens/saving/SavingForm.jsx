@@ -8,8 +8,7 @@ export const SavingForm = () => {
 
     const navigation = useNavigation()
 
-    const goBack = (saving) => {
-        console.log('Nuevo Ahorro:', saving);
+    const goBack = () => {
         navigation.goBack();
     };
 

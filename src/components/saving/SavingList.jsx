@@ -1,11 +1,15 @@
-import { StyleSheet, View, FlatList } from 'react-native'
+import { StyleSheet, View, FlatList, Text } from 'react-native'
 import { colors } from '../../global/colors'
 import SavingBox from './SavingBox'
 import { useGetSavingsQuery } from '../../services/AppServices';
+import { useSelector } from 'react-redux';
 
 const SavingList = () => {
+    const localId = useSelector((state) => state.auth.value.localId);
+    const { data: savings, error, isLoading } = useGetSavingsQuery(localId);
 
-    const {data: savings, isLoading, error} = useGetSavingsQuery()
+    if (isLoading) return <View><Text>Loading...</Text></View>;
+    if (error) return <View><Text>Error: {error.message}</Text></View>;
 
     return (
         <View style={styles.container}>
@@ -16,7 +20,8 @@ const SavingList = () => {
                     <SavingBox
                         saving={item}
                     />}
-                keyExtractor={item => item.idahorro}
+                keyExtractor={item => item.id}
+                style={styles.list}
             />
         </View>
     )
@@ -29,7 +34,10 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         paddingVertical: "5%",
-    }
+    },
+    list: {
+        width: '50%',
+    },
 });
 
 export default SavingList;

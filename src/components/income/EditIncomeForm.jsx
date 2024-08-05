@@ -1,15 +1,18 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { useUpdateIncomeMutation, useDeleteIncomeMutation } from '../../services/AppServices';
 import { colors } from '../../global/colors';
-import { useUpdateIncomeMutation } from '../../services/AppServices';
+import { useSelector } from 'react-redux';
 
 const EditIncomeForm = ({ income, onClose }) => {
+    const localId = useSelector((state) => state.auth.value.localId);
     const [datePickerVisible, setDatePickerVisible] = useState(false);
     const [updateIncome] = useUpdateIncomeMutation();
+    const [deleteIncome] = useDeleteIncomeMutation();
 
     const IncomeSchema = Yup.object().shape({
         monto: Yup.number().required('Monto es requerido'),
@@ -35,6 +38,7 @@ const EditIncomeForm = ({ income, onClose }) => {
     const handleSubmitIncome = async (values) => {
         try {
             await updateIncome({
+                localId,
                 id: income.id,
                 ...values,
                 monto: Number(values.monto),
@@ -45,7 +49,37 @@ const EditIncomeForm = ({ income, onClose }) => {
         } catch (error) {
             Alert.alert('Error', 'El ingreso no se pudo actualizar, intente más tarde.');
             console.error(error);
+            onClose();
         }
+    };
+
+    const handleDeleteIncome = async () => {
+        Alert.alert(
+            "Confirmar eliminación",
+            "¿Estás seguro de que quieres eliminar este ingreso?",
+            [
+                {
+                    text: "Cancelar",
+                    style: "cancel"
+                },
+                {
+                    text: "Eliminar",
+                    onPress: async () => {
+                        try {
+                            await deleteIncome({
+                                localId,
+                                id: income.id
+                            });
+                            onClose();
+                        } catch (error) {
+                            console.error(error);
+                            onClose();
+                        }
+                    },
+                    style: "destructive"
+                }
+            ]
+        );
     };
 
     return (
@@ -63,6 +97,15 @@ const EditIncomeForm = ({ income, onClose }) => {
         >
             {({ handleChange, handleBlur, handleSubmit, setFieldValue, values, errors, touched }) => (
                 <View style={styles.container}>
+                    <Text>Nombre:</Text>
+                    <TextInput
+                        onChangeText={handleChange('nombre')}
+                        onBlur={handleBlur('nombre')}
+                        value={values.nombre}
+                        style={styles.input}
+                    />
+                    {touched.nombre && errors.nombre && <Text style={styles.error}>{errors.nombre}</Text>}
+
                     <Text>Monto:</Text>
                     <TextInput
                         onChangeText={handleChange('monto')}
@@ -72,15 +115,6 @@ const EditIncomeForm = ({ income, onClose }) => {
                         style={styles.input}
                     />
                     {touched.monto && errors.monto && <Text style={styles.error}>{errors.monto}</Text>}
-
-                    <Text>Nombre:</Text>
-                    <TextInput
-                        onChangeText={handleChange('nombre')}
-                        onBlur={handleBlur('nombre')}
-                        value={values.nombre}
-                        style={styles.input}
-                    />
-                    {touched.nombre && errors.nombre && <Text style={styles.error}>{errors.nombre}</Text>}
 
                     <Text>Recibido en:</Text>
                     <Picker
@@ -150,9 +184,14 @@ const EditIncomeForm = ({ income, onClose }) => {
 
                     <Button
                         onPress={handleSubmit}
-                        color={colors.beige300}
                         title='Guardar Cambios'
+                        color={colors.beige300}
                     />
+                    <Text></Text>
+                    <Button
+                        onPress={handleDeleteIncome}
+                        title="Eliminar Ingreso"
+                        color="red" />
                 </View>
             )}
         </Formik>
@@ -165,7 +204,7 @@ const styles = StyleSheet.create({
     },
     input: {
         height: 40,
-        borderColor: colors.gray,
+        borderColor: 'gray',
         borderWidth: 1,
         marginBottom: 10,
         padding: 10,
