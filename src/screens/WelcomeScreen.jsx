@@ -11,7 +11,7 @@ const WelcomeScreen = ({ navigation }) => {
                     <Text style={styles.buttonText}>Iniciar</Text>
                 </View>
             </TouchableWithoutFeedback>
-            <Text style={styles.version}>-Versión 0.8-</Text>
+            <Text style={styles.version}>-Versión 1.0-</Text>
         </View>
     )
 }
