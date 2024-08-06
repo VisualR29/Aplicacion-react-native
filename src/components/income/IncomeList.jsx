@@ -3,13 +3,14 @@ import { colors } from '../../global/colors';
 import { useGetIncomeQuery } from '../../services/AppServices';
 import IncomeItem from './IncomeItem';
 import { useSelector } from 'react-redux';
+import Loading from '../Loading';
 
 const IncomeList = () => {
     const localId = useSelector((state) => state.auth.value.localId);
     const { data: income, isLoading, error } = useGetIncomeQuery(localId);
 
-    if (isLoading) return <View><Text>Loading...</Text></View>;
-    if (error) return <View><Text>Error: {error.message}</Text></View>;
+    if (isLoading) return <Loading message={"Cargando..."} act={true} />;
+    if (error) return <Loading message={`Error: ${error.message}`} act={false} />;
 
     return (
         <View style={styles.container}>

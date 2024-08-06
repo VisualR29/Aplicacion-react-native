@@ -3,15 +3,14 @@ import { colors } from '../../global/colors';
 import { useGetExpensesQuery } from '../../services/AppServices';
 import ExpensesItem from './ExpensesItem';
 import { useSelector } from 'react-redux';
+import Loading from '../Loading';
 
 const ExpensesList = () => {
     const localId = useSelector((state) => state.auth.value.localId);
     const { data: expenses, isLoading, error } = useGetExpensesQuery(localId);
 
-    console.log(error)
-
-    if (isLoading) return <View><Text>Loading...</Text></View>;
-    if (error) return <View><Text>Error: {error.message}</Text></View>;
+    if (isLoading) return <Loading message={"Cargando..."} act={true} />;
+    if (error) return <Loading message={`Error: ${error.message}`} act={false} />;
 
     return (
         <View style={styles.container}>
@@ -35,6 +34,7 @@ const styles = StyleSheet.create({
         backgroundColor: colors.green400,
         justifyContent: "center",
         alignItems: "center",
+        paddingVertical: "5%",
     },
     list: {
         width: '75%',

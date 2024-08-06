@@ -1,15 +1,16 @@
-import { StyleSheet, View, FlatList, Text } from 'react-native'
+import { StyleSheet, View, FlatList } from 'react-native'
 import { colors } from '../../global/colors'
 import SavingBox from './SavingBox'
 import { useGetSavingsQuery } from '../../services/AppServices';
 import { useSelector } from 'react-redux';
+import Loading from '../Loading';
 
 const SavingList = () => {
     const localId = useSelector((state) => state.auth.value.localId);
     const { data: savings, error, isLoading } = useGetSavingsQuery(localId);
 
-    if (isLoading) return <View><Text>Loading...</Text></View>;
-    if (error) return <View><Text>Error: {error.message}</Text></View>;
+    if (isLoading) return <Loading message={"Cargando..."} act={true} />;
+    if (error) return <Loading message={`Error: ${error.message}`} act={false} />;
 
     return (
         <View style={styles.container}>
